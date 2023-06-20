@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,900&display=swap');
+
+/* General settings */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+/* Most used classes */
+:root {
+  --principal-color: rgba(255, 234, 0);
+  --secundary-color: rgb(0, 0, 0);
+}
+.white-text{
+  color: white;
+}
+.black-text{
+  color: var(--secundary-color);
+}
+.background-principal-color{
+  background-color: var(--principal-color);
+}
+.background-secundary-color{
+  background-color: var(--secundary-color);
+}
+.background-white{
+  background-color: white;
+}
+.shadow-principal-color{
+  box-shadow: 18px 18px 0px 2px #FFEA00;
+}
+.shadow-secundary-color{
+  box-shadow: 18px 18px 0px 2px #000000;
+}
+.max-bold{
+  font-weight: 900;
+}
+.margin-titles{
+  margin: 15px 0;
+}
+.hidden{
+  display: none;
+}
+/* AGE CHECK */
+.header-age-check{
+  margin-bottom: 40px;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+}
+.logo-age-check{
+  height: 50px;
+}
+.main-age-check{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.text-age-check{
+  margin: 40px auto;
+}
+.buttons-age-check{
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  transition: transform 0.2s;
+}
+.button-entry {
+  all: unset;
+  background-color: var(--principal-color);
+  text-align: center;
+  width: 80px;
+  height: 25px;
+  padding: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.buttons-age-check button:first-child:hover, .buttons-age-check button:last-child:hover {
+  transform: scale(1.3);
+}
+.responsibility-message{
+  margin: 50px 20px 0 20px;
+}
+.not-age-check{
+  padding: 30px;
+  margin: 0 40px 40px 40px;
+}
+/* HOME */
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* Card style */
+.card{
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.card-text {
+  font-weight: 700;
+  margin-top: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.card-image {
+  width: 180px;
+  height: 180px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Show ingredients */
+.ingredients {
+  width: 180px;
+  height: 180px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  visibility: hidden;
+}
+.ingredients ul {
+  list-style: none;
+  text-align: center;
+}
+.ingredients li {
+  display: block;
+  margin: 0 auto;
+}
+/* TABLET SCREEN MIN:600PX MAX:1023*/
+@media screen and (min-width: 600px) {
+ .logo-age-check{
+  height: 70px;
+ }
+}
+/* COMPUTER SCREEN MIN:1024PX */
+@media screen and (min-width: 1024px) {
+  /* CARD */
+  .card{
+    width: 350px;
+    height: 350px;
+  }
+  .card-image {
+    width: 230px;
+    height: 230px;
+  }
+}

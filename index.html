@@ -3,7 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <title>MIXFIZZ</title>
   </head>
-  <body></body>
+  <body>
+    <header class="background-secundary-color header-age-check">
+      <img
+        src="./assets/logo-02.png"
+        alt="logo-mixfizz"
+        class="logo-age-check"
+      />
+    </header>
+    <main class="main-age-check">
+      <div id="card-entry-hidden">
+        <div
+          id="card-entry"
+          class="card background-secundary-color shadow-principal-color"
+        >
+          <h2 class="white-text text-age-check">Are you of legal age?</h2>
+          <div class="buttons-age-check">
+            <button onclick="redirectToHome()" class="button-entry">Yes</button>
+            <button onclick="showMessage()" class="button-entry">No</button>
+          </div>
+          <p class="white-text responsibility-message">
+            *Enjoy alcohol in moderation and savor the moment but remember, it's
+            about quality, not quantity.
+          </p>
+        </div>
+      </div>
+      <div
+        id="message-not-entry"
+        class="not-age-check background-principal-color shadow-secundary-color hidden"
+      >
+        <h2 class="max-bold">You must be of legal age to enter this website</h2>
+      </div>
+    </main>
+    <script src="./js/enter_website.js"></script>
+  </body>
 </html>

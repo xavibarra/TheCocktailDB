@@ -1,0 +1,131 @@
+/* General settings */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --principal-color: rgba(255, 234, 0, 1);
+    --secundary-color: rgb(0, 0, 0);
+  }
+  
+  /* Nav Bar */
+  .nav-bar {
+    background-color: var(--secundary-color);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+  }
+  
+  .logo-img {
+    height: 50px;
+    margin-left: 10px;
+  }
+  .nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    list-style: none;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .links-hidden{
+    display: none;
+  }
+  
+  .nav-links li a{
+    color: var(--principal-color);
+    text-decoration: none;
+  }
+  
+  .nav-links li{
+    margin: 0 5px 5px 5px;
+  }
+  /* burger button menu */
+  .menu-icon{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 0;
+  }
+  .line{
+    fill: none;
+    stroke: var(--principal-color);
+    stroke-width: 6;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+      stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .line1{
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+  }
+  .line2{
+    stroke-dasharray: 60 60;
+    stroke-width: 6;
+  }
+  .line3{
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+  }
+  .opened .line1{
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+  }
+  .opened .line2{
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 6;
+  }
+  .opened .line3{
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+  }
+  /* burger container */
+  .container-burger-menu{
+    background-color: var(--secundary-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    display: none;
+  }
+
+ .show {
+    display: flex;
+  }
+
+ /* COMPUTER SCREEN MIN:1024PX */
+ @media screen and (min-width: 1024px) {
+  .links-hidden{
+    display: flex;
+  }
+  .logo {
+    margin-right: 0;
+  }
+  .logo-img {
+    height: 60px;
+  }
+  .nav-links{
+    flex-direction: row;
+  }
+  .menu-icon, .container-burger-menu{
+    display: none;
+  }
+  .nav-links li{
+    margin: 0 5px;
+  }
+  .nav-links li a{
+    font-size: 1.5vw;
+  }
+ }
+
