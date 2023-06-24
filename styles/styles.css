@@ -104,6 +104,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin-bottom: 50px;
+  cursor:pointer;
 }
 .card-text {
   font-weight: 700;
@@ -112,15 +113,16 @@ body {
   text-transform: uppercase;
 }
 .card-image {
+  position: absolute;
   width: 180px;
   height: 180px;
-  margin-top: 20px;
-  margin-bottom: 5px;
 }
 .card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 /* Show ingredients */
 .ingredients {
@@ -155,4 +157,16 @@ body {
     width: 230px;
     height: 230px;
   }
+  .card-image:hover{
+    opacity: 0;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    -ms-transition: opacity 500ms;
+    transition: opacity 500ms;
+  }
+  .card-image:hover +.ingredients{
+    visibility: visible;
+  }
+  
 }
