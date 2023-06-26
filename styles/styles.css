@@ -114,8 +114,8 @@ body {
 }
 .card-image {
   position: absolute;
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
 }
 .card-image img {
   width: 100%;
@@ -133,8 +133,9 @@ body {
   visibility: hidden;
 }
 .ingredients ul {
+  margin-top: 5px;
   list-style: none;
-  text-align: center;
+  text-align: left;
 }
 .ingredients li {
   display: block;
@@ -144,6 +145,13 @@ body {
 @media screen and (min-width: 600px) {
  .logo-age-check{
   height: 70px;
+ }
+ /* HOME */
+ .classic-cocktails{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 100px;
+ 
  }
 }
 /* COMPUTER SCREEN MIN:1024PX */
@@ -159,14 +167,16 @@ body {
   }
   .card-image:hover{
     opacity: 0;
-    -webkit-transition: opacity 500ms;
-    -moz-transition: opacity 500ms;
-    -o-transition: opacity 500ms;
-    -ms-transition: opacity 500ms;
     transition: opacity 500ms;
   }
   .card-image:hover +.ingredients{
     visibility: visible;
   }
+  .classic-cocktails{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0 100px;
+   
+   }
   
 }
