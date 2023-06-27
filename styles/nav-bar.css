@@ -32,7 +32,7 @@
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-    text-align: right;
+    align-items: center;
     flex-grow: 1;
     list-style: none;
     font-family: 'Montserrat', sans-serif;
