@@ -1,4 +1,4 @@
-import fetchClassicCocktails from "./get_cocktail_by_id.js";
+import fetchClassicCocktails from "./get_classic_cocktails.js";
 
 window.addEventListener("DOMContentLoaded", function () {
   // Function to create the cocktail cards
