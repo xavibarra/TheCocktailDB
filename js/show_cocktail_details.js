@@ -142,8 +142,3 @@ if (jsonCocktail) {
 } else {
   console.log("No JSON object found in sessionStorage");
 }
-// Function to change to Spanish language
-function changeToSpanish() {
-  const flagEs = document.getElementById("flagEs");
-  flagEs.click();
-}
