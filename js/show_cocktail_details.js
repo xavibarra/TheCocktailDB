@@ -18,6 +18,7 @@ if (jsonCocktail) {
   const flagElements = document.getElementsByClassName("flag-image");
   for (let i = 0; i < flagElements.length; i++) {
     flagElements[i].addEventListener("click", handleFlagClick);
+    flagElements[i].addEventListener("touchstart", handleFlagClick);
   }
 
   // Function to fetch translation from API
