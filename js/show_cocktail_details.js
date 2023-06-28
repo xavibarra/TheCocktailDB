@@ -14,42 +14,10 @@ if (jsonCocktail) {
   if (cocktail.strTags) {
     tagsElement.textContent = "#" + cocktail.strTags.replace(/,/g, " #");
   }
-  // Get the instructions element
-  const instructionsTextElement = document.querySelector(
-    "#instructions .instructions-text"
-  );
-
-  // Set default language to English
-  let currentLanguage = "en";
-
-  // Function to handle flag click
-  function handleFlagClick(event, targetLanguage) {
-    // Check if the target language is different from the current language
-    if (targetLanguage !== currentLanguage) {
-      // Update the current language
-      currentLanguage = targetLanguage;
-
-      // Get the translation for the instructions
-      const translatedInstructions =
-        cocktail[`strInstructions${targetLanguage.toUpperCase()}`];
-      if (translatedInstructions) {
-        instructionsTextElement.textContent = translatedInstructions;
-      } else {
-        // If the translation doesn't exist, use the API to translate
-        translateText(cocktail.strInstructions, targetLanguage)
-          .then((translatedText) => {
-            if (translatedText) {
-              instructionsTextElement.textContent = translatedText;
-            } else {
-              instructionsTextElement.textContent = "Translation not available";
-            }
-          })
-          .catch((error) => {
-            console.error("Error:", error.message);
-            instructionsTextElement.textContent = "Translation error";
-          });
-      }
-    }
+  // Attach event listeners to flags
+  const flagElements = document.getElementsByClassName("flag-image");
+  for (let i = 0; i < flagElements.length; i++) {
+    flagElements[i].addEventListener("click", handleFlagClick);
   }
 
   // Function to fetch translation from API
@@ -67,6 +35,63 @@ if (jsonCocktail) {
     } catch (error) {
       console.error("Error:", error.message);
       return null;
+    }
+  }
+
+  // Get the instructions element
+  const instructionsTextElement = document.querySelector(
+    "#instructions .instructions-text"
+  );
+
+  // Set default language to English
+  let currentLanguage = "en";
+
+  // Function to handle flag click
+  function handleFlagClick(event) {
+    const flagId = event.target.id;
+
+    // Define language mappings
+    const languageMap = {
+      flagEn: "en",
+      flagEs: "es",
+      flagFr: "fr",
+      flagIt: "it",
+      flagDe: "de",
+      flagCa: "ca",
+    };
+
+    const targetLanguage = languageMap[flagId];
+
+    // Check if the target language is different from the current language
+    if (targetLanguage !== currentLanguage) {
+      // Update the current language
+      currentLanguage = targetLanguage;
+      if (targetLanguage === "en") {
+        // If target language is English, display original English instructions
+        instructionsTextElement.textContent = cocktail.strInstructions;
+      } else {
+        // Get the translation for the instructions
+        const translatedInstructions =
+          cocktail[`strInstructions${targetLanguage.toUpperCase()}`];
+        if (translatedInstructions) {
+          instructionsTextElement.textContent = translatedInstructions;
+        } else {
+          // If the translation doesn't exist, use the API to translate
+          translateText(cocktail.strInstructions, targetLanguage)
+            .then((translatedText) => {
+              if (translatedText) {
+                instructionsTextElement.textContent = translatedText;
+              } else {
+                instructionsTextElement.textContent =
+                  "Translation not available";
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error.message);
+              instructionsTextElement.textContent = "Translation error";
+            });
+        }
+      }
     }
   }
 
