@@ -5,12 +5,15 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((response) => response.text())
     .then((data) => {
       componentContainer.innerHTML = data;
+      loadBurgerMenu();
     })
     .catch((error) => {
       console.error("Error al cargar el componente:", error);
     });
-  // load and run burger_menu.js
-  const scriptElement = document.createElement("script");
-  scriptElement.src = "../js/burger_menu.js";
-  document.body.appendChild(scriptElement);
+  function loadBurgerMenu() {
+    // load and run burger_menu.js
+    const scriptElement = document.createElement("script");
+    scriptElement.src = "../js/burger_menu.js";
+    document.body.appendChild(scriptElement);
+  }
 });

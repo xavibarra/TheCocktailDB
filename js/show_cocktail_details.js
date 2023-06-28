@@ -45,7 +45,7 @@ if (jsonCocktail) {
   );
 
   // Set default language to English
-  let currentLanguage = "en";
+  const currentLanguage = "en";
 
   // Function to handle flag click
   function handleFlagClick(event) {
