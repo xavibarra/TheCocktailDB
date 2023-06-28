@@ -3,66 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles/nav-bar.css" />
     <link rel="stylesheet" href="../styles/styles.css" />
     <title>Cocktail Details</title>
   </head>
   <body>
     <header>
-      <nav class="nav-bar-full-screen">
-        <nav class="nav-bar">
-          <ul class="nav-links links-hidden">
-            <li class="nav-link"><a href="./home.html">HOME</a></li>
-            <li class="nav-link">
-              <a href="./categories.html">CATEGORIES</a>
-            </li>
-            <li class="nav-link">
-              <a href="./search-by-name.html">SEARCH BY NAME</a>
-            </li>
-          </ul>
-          <div class="logo">
-            <img src="../assets/logo-02.png" alt="" class="logo-img" />
-          </div>
-          <ul class="nav-links links-hidden">
-            <li class="nav-link">
-              <a href="./search-by-ingredient.html">SEARCH BY INGREDIENT</a>
-            </li>
-            <li class="nav-link"><a href="">GLASSES</a></li>
-            <li class="nav-link"><a href="">EXAM</a></li>
-          </ul>
-          <button
-            id="menuButton"
-            class="menu-icon large"
-            aria-label="Main Menu"
-          >
-            <svg width="60" height="60" viewBox="0 0 100 100">
-              <path
-                class="line line1"
-                d="M20,29 H80 C80,29 94.5,28.8 94.5,66.7 C94.5,77.98 91,81.67 85.3,81.67 C79.6,81.67 75,75 75,75 L25,25"
-              />
-              <path class="line line2" d="M20,50 H80" />
-              <path
-                class="line line3"
-                d="M20,71 H80 C80,71 94.5,71.2 94.5,33.3 C94.5,22.02 91,18.33 85.3,18.33 C79.6,18.33 75,25 75,25 L25,75"
-              />
-            </svg>
-          </button>
-        </nav>
-        <div class="container-burger-menu">
-          <ul class="nav-links">
-            <li><a href="./home.html">HOME</a></li>
-            <li><a href="./categories.html">CATEGORIES</a></li>
-            <li><a href="./search-by-name.html">SEARCH BY NAME</a></li>
-            <li>
-              <a href="../pages/search-by-ingredient.html"
-                >SEARCH BY INGREDIENT</a
-              >
-            </li>
-            <li><a href="">GLASSES</a></li>
-            <li><a href="">EXAM</a></li>
-          </ul>
-        </div>
-      </nav>
+      <nav id="nav-bar"></nav>
     </header>
     <main>
       <section
@@ -127,6 +73,6 @@
       </section>
     </main>
     <script src="../js/show_cocktail_details.js"></script>
-    <script src="../js/burger_menu.js"></script>
+    <script src="../js/nav_bar.js"></script>
   </body>
 </html>
