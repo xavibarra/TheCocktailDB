@@ -11,7 +11,9 @@ if (jsonCocktail) {
   cocktailNameElement.textContent = cocktail.strDrink.toUpperCase();
 
   const tagsElement = document.getElementById("tags");
-  tagsElement.textContent = "#" + cocktail.strTags.replace(/,/g, " #");
+  if (cocktail.strTags) {
+    tagsElement.textContent = "#" + cocktail.strTags.replace(/,/g, " #");
+  }
 
   // Function to fetch translation from API
   async function translateText(text, targetLanguage) {
