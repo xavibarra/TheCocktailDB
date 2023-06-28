@@ -14,30 +14,6 @@ if (jsonCocktail) {
   if (cocktail.strTags) {
     tagsElement.textContent = "#" + cocktail.strTags.replace(/,/g, " #");
   }
-  // Attach event listeners to flags
-  const flagElements = document.getElementsByClassName("flag-image");
-  for (let i = 0; i < flagElements.length; i++) {
-    flagElements[i].addEventListener("click", handleFlagClick);
-  }
-
-  // Function to fetch translation from API
-  async function translateText(text, targetLanguage) {
-    const apiUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
-      text
-    )}&langpair=en|${targetLanguage}`;
-
-    try {
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-      const translatedText = data.responseData.translatedText;
-
-      return translatedText;
-    } catch (error) {
-      console.error("Error:", error.message);
-      return null;
-    }
-  }
-
   // Get the instructions element
   const instructionsTextElement = document.querySelector(
     "#instructions .instructions-text"
@@ -47,21 +23,7 @@ if (jsonCocktail) {
   let currentLanguage = "en";
 
   // Function to handle flag click
-  function handleFlagClick(event) {
-    const flagId = event.target.id;
-
-    // Define language mappings
-    const languageMap = {
-      flagEn: "en",
-      flagEs: "es",
-      flagFr: "fr",
-      flagIt: "it",
-      flagDe: "de",
-      flagCa: "ca",
-    };
-
-    const targetLanguage = languageMap[flagId];
-
+  function handleFlagClick(event, targetLanguage) {
     // Check if the target language is different from the current language
     if (targetLanguage !== currentLanguage) {
       // Update the current language
@@ -87,6 +49,24 @@ if (jsonCocktail) {
             instructionsTextElement.textContent = "Translation error";
           });
       }
+    }
+  }
+
+  // Function to fetch translation from API
+  async function translateText(text, targetLanguage) {
+    const apiUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
+      text
+    )}&langpair=en|${targetLanguage}`;
+
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      const translatedText = data.responseData.translatedText;
+
+      return translatedText;
+    } catch (error) {
+      console.error("Error:", error.message);
+      return null;
     }
   }
 
