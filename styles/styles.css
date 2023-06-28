@@ -185,6 +185,7 @@ body {
   margin-right: 5px;
   cursor: pointer;
 }
+/* CATEGORIES */
 /* TABLET SCREEN MIN:600PX MAX:1023*/
 @media screen and (min-width: 600px) {
  .logo-age-check{
