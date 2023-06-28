@@ -14,6 +14,11 @@ if (jsonCocktail) {
   if (cocktail.strTags) {
     tagsElement.textContent = "#" + cocktail.strTags.replace(/,/g, " #");
   }
+  // Attach event listeners to flags
+  const flagElements = document.getElementsByClassName("flag-image");
+  for (let i = 0; i < flagElements.length; i++) {
+    flagElements[i].addEventListener("click", handleFlagClick);
+  }
 
   // Function to fetch translation from API
   async function translateText(text, targetLanguage) {
@@ -83,12 +88,6 @@ if (jsonCocktail) {
           });
       }
     }
-  }
-
-  // Attach event listeners to flags
-  const flagElements = document.getElementsByClassName("flag-image");
-  for (let i = 0; i < flagElements.length; i++) {
-    flagElements[i].addEventListener("click", handleFlagClick);
   }
 
   // Set initial instructions to English
