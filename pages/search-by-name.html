@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../styles/styles.css" />
     <link rel="stylesheet" href="../styles/nav-bar.css" />
     <script src="../js/burger_menu.js" defer></script>
-    <title>Categories</title>
+    <title>Search Cocktail</title>
   </head>
   <body>
     <header>
@@ -67,39 +67,16 @@
         </div>
       </div>
     </header>
-    <section class="top-container background-principal-color">
-      <ul class="categories-list">
-        <li>Ordinary drinks</li>
-        <li>Cocktail</li>
-        <li>Homemade Liqueur</li>
-        <li>Punch</li>
-        <li>Beer</li>
-        <li>Soft Drink</li>
-        <li>Coffee/Tea</li>
-        <li>Shot</li>
-        <li>Shake</li>
-        <li>Cocoa</li>
-        <li>Other</li>
-      </ul>
-      <div class="category-select custom-select">
-        <select name="category" id="category-select">
-          <option value="" selected disabled>SELECT A CATEGORY 🡣</option>
-          <option value="Ordinary drinks">Ordinary Drinks</option>
-          <option value="cocktail">Cocktail</option>
-          <option value="homemadeLiqueur">Homemade Liqueur</option>
-          <option value="punch">Punch</option>
-          <option value="beer">Beer</option>
-          <option value="softDrink">Soft Drink</option>
-          <option value="coffeeTea">Coffee/Tea</option>
-          <option value="shot">Shot</option>
-          <option value="shake">Shake</option>
-          <option value="cocoa">Cocoa</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-    </section>
-    <section class="categories-card-section">
-      <h2 id="category-name"></h2>
-    </section>
+    <main>
+      <section class="background-principal-color top-container">
+        <input
+          type="text"
+          name="searchCocktail"
+          id="searchCocktail"
+          class="search-by-input"
+          placeholder="Enter a cocktail name"
+        />
+      </section>
+    </main>
   </body>
 </html>
