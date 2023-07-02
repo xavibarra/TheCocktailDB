@@ -199,6 +199,7 @@ display: none;
 }
 #category-select{
   margin: 25px 0;
+  font-family: 'Montserrat', sans-serif;
 }
   /* Select styles */
 .custom-select select {
@@ -221,12 +222,12 @@ display: none;
 /* SEARCH BY NAME */
 .search-by-input{
   margin: 25px 0;
-  width: 90%;
-  border: #000000 2px solid;
-  color: white;
-  background-color: var(--secundary-color);
-  padding: 10px 0 10px 10px ;
-  border-radius: 5px;
+  width: 50%;
+  border: white 2px solid;
+  color: var(--secundary-color);
+  background-color: white;
+  padding: 7px 0 7px 10px ;
+  border-radius: 2px;
   font-size: 1.25em;
 }
 .search-by-input::placeholder{
