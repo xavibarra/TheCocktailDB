@@ -180,8 +180,8 @@ body {
   justify-content: space-between;
 }
 .flag-image{
-  width: 50px;
-  height: 30px;
+  width: 40px;
+  height: 25px;
   margin-right: 5px;
   cursor: pointer;
 }
@@ -221,8 +221,9 @@ display: none;
 }
 /* SEARCH BY NAME */
 .search-by-input{
+  font-family: 'Montserrat', sans-serif;
   margin: 25px 0;
-  width: 50%;
+  width: 60%;
   border: white 2px solid;
   color: var(--secundary-color);
   background-color: white;
@@ -232,7 +233,7 @@ display: none;
 }
 .search-by-input::placeholder{
 
-  color: rgba(255, 255, 255, 0.816);
+  color: rgba(117, 117, 117, 0.816);
 }
 .search-by-input:focus{
   outline: none;
