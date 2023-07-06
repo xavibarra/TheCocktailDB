@@ -1,8 +1,8 @@
-import { obtenerCocktailDelDia } from "./get_cocktail_of_the_day.js";
+import getCocktailOfTheDay from "./get_cocktail_of_the_day.js";
 
 async function usarCocktail() {
   try {
-    const cocktail = await obtenerCocktailDelDia();
+    const cocktail = await getCocktailOfTheDay();
 
     const cardWhiteElement = document.querySelector(".cardWhite");
     // cardWhiteElement.innerHTML = "";
