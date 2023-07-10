@@ -3,7 +3,7 @@
 /* GENERAL SETTINGS */
 * {
   padding: 0;
-  margin: 0;
+  margin: 0;  
   box-sizing: border-box;
 }
 body {
@@ -95,6 +95,11 @@ body {
   justify-content: center;
   align-items: center;
 }
+.cocktail-cards{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0 100px;
+}
 /* Card style */
 .card{
   width: 300px;
@@ -163,7 +168,7 @@ body {
   height: 270px;
 }
 .serve-cocktail-details{
-  margin: 20px 0 30px 0;
+  margin: 30px 0 30px 0;
   text-align: right;
 }
 .details-text{
@@ -244,7 +249,7 @@ display: none;
    height: 70px;
   }
  /* HOME */
- .classic-cocktails{
+ .cocktail-cards{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0 100px;
@@ -273,7 +278,7 @@ display: none;
   .card-image:hover +.ingredients{
     visibility: visible;
   }
-  .classic-cocktails{
+  .cocktail-cards{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0 100px;

@@ -1,4 +1,4 @@
-export async function getCocktailOfTheDay() {
+export default async function getCocktailOfTheDay() {
   try {
     const currentDate = new Date();
     const storedDate = localStorage.getItem("cocktailDate");
