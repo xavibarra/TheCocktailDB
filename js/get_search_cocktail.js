@@ -4,7 +4,7 @@ function searchCocktails(query, searchResults) {
     searchResults.innerHTML = "";
 
     // Make a request to the API to get the cocktails
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${query}`)
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`)
       .then((response) => response.json())
       .then((data) => {
         const cocktails = data.drinks;
