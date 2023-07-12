@@ -44,6 +44,9 @@ body {
 .margin-top{
   margin-top: 20px;
 }
+.centered-text{
+  text-align: center;
+}
 .hidden{
   display: none;
 }
@@ -87,7 +90,7 @@ body {
 .responsibility-message{
   margin: 50px 20px 0 20px;
 }
-.not-age-check{
+.text-card{
   padding: 30px;
   margin: 0 40px 40px 40px;
 }
@@ -198,6 +201,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 90px;
 }
 .categories-list{
 display: none;

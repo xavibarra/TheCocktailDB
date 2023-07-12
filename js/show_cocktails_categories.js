@@ -4,14 +4,22 @@ const categorySelect = document.getElementById("categorySelect");
 const categoryList = document.getElementById("categoryList");
 const categoriesResults = document.querySelector("#card");
 
+// Event listener for select
 categorySelect.addEventListener("change", function () {
   const selectedValue = categorySelect.value;
-  if (selectedValue != "") {
+  if (selectedValue != "select") {
     categoriesResults.innerHTML = "";
     showCocktailsCategories(selectedValue);
   }
+  //else {
+  //   const SelectCategory = document.getElementById("selectCategoryText");
+  //   const textCard = document.createElement("h2");
+  //   textCard.classList.add("centered-text", "white-text");
+  //   textCard.textContent = "Select a category";
+  //   SelectCategory.appendChild(textCard);
+  //}
 });
-// Event listener para la lista
+// Event listener for list
 const listItems = categoryList.getElementsByTagName("li");
 for (let i = 0; i < listItems.length; i++) {
   listItems[i].addEventListener("click", function () {
@@ -36,7 +44,7 @@ async function showCocktailsCategories(category) {
           "shadow-principal-color"
         );
 
-        // Create the h2 element for the "margarita" text
+        // Create the h2 element for the cocktail name
         const heading = document.createElement("h2");
         heading.classList.add("card-text", "white-text");
         heading.textContent = cocktail.strDrink;

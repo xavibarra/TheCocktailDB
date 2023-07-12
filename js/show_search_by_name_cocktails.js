@@ -26,7 +26,7 @@ function performSearch(query) {
             "shadow-principal-color"
           );
 
-          // Create the h2 element for the "margarita" text
+          // Create the h2 element for the cocktail name
           const heading = document.createElement("h2");
           heading.classList.add("card-text", "white-text");
           heading.textContent = cocktail.strDrink;
