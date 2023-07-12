@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="../styles/styles.css" />
     <link rel="stylesheet" href="../styles/nav-bar.css" />
     <script src="../js/burger_menu.js" defer></script>
+    <script
+      type="module"
+      src="../js/show_cocktails_categories.js"
+      defer
+    ></script>
     <title>Categories</title>
   </head>
   <body>
@@ -68,38 +73,41 @@
       </div>
     </header>
     <section class="top-container background-principal-color">
-      <ul class="categories-list">
-        <li>Ordinary drinks</li>
-        <li>Cocktail</li>
-        <li>Homemade Liqueur</li>
-        <li>Punch</li>
-        <li>Beer</li>
-        <li>Soft Drink</li>
-        <li>Coffee/Tea</li>
-        <li>Shot</li>
-        <li>Shake</li>
-        <li>Cocoa</li>
-        <li>Other</li>
+      <ul id="categoryList" class="categories-list">
+        <li data-value="ordinary_drink">Ordinary drinks</li>
+        <li data-value="cocktail">Cocktail</li>
+        <li data-value="homemade_liqueur">Homemade Liqueur</li>
+        <li data-value="punch_/_party_drink">Punch</li>
+        <li data-value="beer">Beer</li>
+        <li data-value="soft_drink">Soft Drink</li>
+        <li data-value="coffee_/_tea">Coffee/Tea</li>
+        <li data-value="shot">Shot</li>
+        <li data-value="shake">Shake</li>
+        <li data-value="cocoa">Cocoa</li>
+        <li data-value="other_/_unknown">Other</li>
       </ul>
       <div class="category-select custom-select">
-        <select name="category" id="category-select">
+        <select name="category" id="categorySelect">
           <option value="" selected disabled>SELECT A CATEGORY</option>
-          <option value="Ordinary drinks">Ordinary Drinks</option>
+          <option value="ordinary_drink">Ordinary Drinks</option>
           <option value="cocktail">Cocktail</option>
-          <option value="homemadeLiqueur">Homemade Liqueur</option>
-          <option value="punch">Punch</option>
+          <option value="homemade_liqueur">Homemade Liqueur</option>
+          <option value="punch_/_party_drink">Punch</option>
           <option value="beer">Beer</option>
-          <option value="softDrink">Soft Drink</option>
-          <option value="coffeeTea">Coffee/Tea</option>
+          <option value="soft_drink">Soft Drink</option>
+          <option value="coffee_/_tea">Coffee/Tea</option>
           <option value="shot">Shot</option>
           <option value="shake">Shake</option>
           <option value="cocoa">Cocoa</option>
-          <option value="other">Other</option>
+          <option value="other_/_unknown">Other</option>
         </select>
       </div>
     </section>
     <section class="categories-card-section">
       <h2 id="category-name"></h2>
     </section>
+    <div class="container margin-top">
+      <div id="card" class="cocktail-cards"></div>
+    </div>
   </body>
 </html>

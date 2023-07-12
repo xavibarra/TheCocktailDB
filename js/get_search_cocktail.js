@@ -1,20 +1,20 @@
-function searchCocktails(query, searchResults) {
-  return new Promise((resolve, reject) => {
-    // Clear previous search results
-    searchResults.innerHTML = "";
+async function searchCocktails(query, searchResults) {
+  // Clear previous search results
+  searchResults.innerHTML = "";
 
+  try {
     // Make a request to the API to get the cocktails
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const cocktails = data.drinks;
-        // Return the search results
-        resolve(cocktails);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
+    const response = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`
+    );
+    const data = await response.json();
+    const cocktails = data.drinks;
+
+    // Return the search results
+    return cocktails;
+  } catch (error) {
+    throw error;
+  }
 }
 
 export default searchCocktails;

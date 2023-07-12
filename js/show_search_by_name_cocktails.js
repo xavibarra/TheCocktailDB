@@ -15,7 +15,7 @@ function performSearch(query) {
   // Perform the search for cocktails
   searchCocktails(query, searchResults)
     .then((cocktails) => {
-      // Display the results in <p> tags
+      // show results
       if (cocktails && cocktails.length > 0) {
         cocktails.forEach((cocktail) => {
           // Create the main div element

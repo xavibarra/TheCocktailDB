@@ -1,6 +1,6 @@
 import getCocktailOfTheDay from "./get_cocktail_of_the_day.js";
 
-async function usarCocktail() {
+async function showCocktailOfTheDay() {
   try {
     const cocktail = await getCocktailOfTheDay();
 
@@ -85,4 +85,4 @@ async function usarCocktail() {
   }
 }
 
-usarCocktail();
+showCocktailOfTheDay();

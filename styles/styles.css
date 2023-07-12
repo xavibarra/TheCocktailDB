@@ -22,7 +22,7 @@ body {
 }
 .background-principal-color{
   background-color: var(--principal-color);
-}
+} 
 .background-secundary-color{
   background-color: var(--secundary-color);
 }
@@ -220,6 +220,7 @@ display: none;
   appearance: none;
   outline: none;
   cursor: pointer;
+  margin: 10px auto;
 }
 .custom-select select option:first-child {
   color:var(--principal-color);
