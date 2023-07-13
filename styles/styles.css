@@ -112,7 +112,7 @@ body {
 /* Card style */
 .card{
   width: 300px;
-  height: 300px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -129,14 +129,27 @@ body {
   position: absolute;
   width: 200px;
   height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.card-image img {
+.card-image .cocktail-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   margin-top: 20px;
   margin-bottom: 5px;
 }
+.like-image{
+  width: 30px;
+  height: 30px;
+  margin-top: 32px;
+}
+.like-image:hover{
+  width: 35px;
+  height: 35px;
+}
+
 /* Show ingredients */
 .ingredients {
   width: 180px;
@@ -298,7 +311,7 @@ display: none;
   /* CARD */
   .card{
     width: 350px;
-    height: 350px;
+    height: 380px;
   }
   .card-image {
     width: 230px;
@@ -315,6 +328,9 @@ display: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0 100px;
+  }
+  .like-image{
+    margin-top: 60px;
   }
    /* COCKTAIL DETAILS */
    #cocktail-details{

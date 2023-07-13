@@ -1,4 +1,5 @@
 import searchCocktails from "./get_search_cocktail.js";
+import { checkLike, toggleFavorite } from "./check_like.js";
 
 // Get references to DOM elements
 const searchInput = document.querySelector("#searchCocktail");
@@ -40,6 +41,7 @@ async function performSearch(query) {
         cardImage.classList.add("card-image");
 
         const image = document.createElement("img");
+        image.classList.add("cocktail-image");
         image.src = cocktail.strDrinkThumb;
         image.alt = cocktail.strDrink + " Image";
 
@@ -66,10 +68,32 @@ async function performSearch(query) {
         cocktailIngredientsDiv.appendChild(ingredientsTitle);
         cocktailIngredientsDiv.appendChild(cocktailIngredientsList);
 
+        // Create like image
+        const like = document.createElement("img");
+        like.src = checkLike(cocktail);
+        like.alt = "like image";
+        like.classList.add("like-image");
+
+        // Set the cocktail object as a custom attribute
+        like.setAttribute("data-cocktail", JSON.stringify(cocktail));
+        //Click like
+        like.addEventListener("click", function (event) {
+          //Do not send to cocktail-details when clicking on the like
+          event.stopPropagation();
+          const cocktailDetails = JSON.parse(
+            this.getAttribute("data-cocktail")
+          );
+          toggleFavorite(cocktailDetails);
+
+          // Update the like image
+          this.src = checkLike(cocktailDetails);
+        });
+
         card.appendChild(heading);
         container.appendChild(cardImage);
         container.appendChild(cocktailIngredientsDiv);
         card.appendChild(container);
+        card.appendChild(like);
 
         document.querySelector("#card").appendChild(card);
       });

@@ -1,4 +1,5 @@
 import fetchClassicCocktails from "./get_classic_cocktails.js";
+import { checkLike, toggleFavorite } from "./check_like.js";
 
 window.addEventListener("DOMContentLoaded", function () {
   // Function to create the cocktail cards
@@ -41,6 +42,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
         // Create the img element for the cocktail image
         const image = document.createElement("img");
+        image.classList.add("cocktail-image");
         image.src = classicCocktailsArray[i].strDrinkThumb;
         image.alt = classicCocktailsArray[i].strDrink + " Image";
 
@@ -74,11 +76,36 @@ window.addEventListener("DOMContentLoaded", function () {
         cocktailIngredientsDiv.appendChild(ingredientsTitle);
         cocktailIngredientsDiv.appendChild(cocktailIngredientsList);
 
+        // Create like image
+        const like = document.createElement("img");
+        like.src = checkLike(classicCocktailsArray[i]);
+        like.alt = "like image";
+        like.classList.add("like-image");
+
+        // Set the cocktail object as a custom attribute
+        like.setAttribute(
+          "data-cocktail",
+          JSON.stringify(classicCocktailsArray[i])
+        );
+        //Click like
+        like.addEventListener("click", function (event) {
+          //Do not send to cocktail-details when clicking on the like
+          event.stopPropagation();
+          const cocktailDetails = JSON.parse(
+            this.getAttribute("data-cocktail")
+          );
+          toggleFavorite(cocktailDetails);
+
+          // Update the like image
+          this.src = checkLike(cocktailDetails);
+        });
         // Add the elements to the DOM tree
         card.appendChild(heading);
         container.appendChild(cardImage);
         container.appendChild(cocktailIngredientsDiv);
+
         card.appendChild(container);
+        card.appendChild(like);
 
         // Add the card to the HTML document
         document.querySelector("#card").appendChild(card);

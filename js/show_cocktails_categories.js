@@ -1,4 +1,5 @@
 import getCocktailsCategories from "./get_cocktails_categories.js";
+import { checkLike, toggleFavorite } from "./check_like.js";
 
 const categorySelect = document.getElementById("categorySelect");
 const categoryList = document.getElementById("categoryList");
@@ -11,13 +12,6 @@ categorySelect.addEventListener("change", function () {
     categoriesResults.innerHTML = "";
     showCocktailsCategories(selectedValue);
   }
-  //else {
-  //   const SelectCategory = document.getElementById("selectCategoryText");
-  //   const textCard = document.createElement("h2");
-  //   textCard.classList.add("centered-text", "white-text");
-  //   textCard.textContent = "Select a category";
-  //   SelectCategory.appendChild(textCard);
-  //}
 });
 // Event listener for list
 const listItems = categoryList.getElementsByTagName("li");
@@ -67,6 +61,7 @@ async function showCocktailsCategories(category) {
 
         // Create the img element for the cocktail image
         const image = document.createElement("img");
+        image.classList.add("cocktail-image");
         image.src = cocktail.strDrinkThumb;
         image.alt = cocktail.strDrink + " Image";
 
@@ -100,11 +95,33 @@ async function showCocktailsCategories(category) {
         cocktailIngredientsDiv.appendChild(ingredientsTitle);
         cocktailIngredientsDiv.appendChild(cocktailIngredientsList);
 
+        // Create like image
+        const like = document.createElement("img");
+        like.src = checkLike(cocktail);
+        like.alt = "like image";
+        like.classList.add("like-image");
+
+        // Set the cocktail object as a custom attribute
+        like.setAttribute("data-cocktail", JSON.stringify(cocktail));
+        //Click like
+        like.addEventListener("click", function (event) {
+          //Do not send to cocktail-details when clicking on the like
+          event.stopPropagation();
+          const cocktailDetails = JSON.parse(
+            this.getAttribute("data-cocktail")
+          );
+          toggleFavorite(cocktailDetails);
+
+          // Update the like image
+          this.src = checkLike(cocktailDetails);
+        });
+
         // Add the elements to the DOM tree
         card.appendChild(heading);
         container.appendChild(cardImage);
         container.appendChild(cocktailIngredientsDiv);
         card.appendChild(container);
+        card.appendChild(like);
 
         // Add the card to the HTML document
         document.querySelector("#card").appendChild(card);

@@ -5,7 +5,7 @@ async function getCocktailsCategories(category) {
       `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`
     );
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     const cocktails = data.drinks;
     const cocktailIds = cocktails.map((cocktail) => cocktail.idDrink);
 

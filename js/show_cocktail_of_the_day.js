@@ -1,4 +1,5 @@
 import getCocktailOfTheDay from "./get_cocktail_of_the_day.js";
+import { checkLike, toggleFavorite } from "./check_like_black.js";
 
 async function showCocktailOfTheDay() {
   try {
@@ -39,6 +40,8 @@ async function showCocktailOfTheDay() {
 
     // Create the img element for the cocktail image
     const cocktailImageElement = document.createElement("img");
+
+    cocktailImageElement.classList.add("cocktail-image");
     cocktailImageElement.src = cocktail.strDrinkThumb;
     cocktailImageElement.alt = cocktail.strDrink + " Image";
 
@@ -72,11 +75,31 @@ async function showCocktailOfTheDay() {
     cocktailIngredientsDiv.appendChild(ingredientsTitle);
     cocktailIngredientsDiv.appendChild(cocktailIngredientsList);
 
+    // Create like image
+    const like = document.createElement("img");
+    like.src = checkLike(cocktail);
+    like.alt = "like image";
+    like.classList.add("like-image");
+
+    // Set the cocktail object as a custom attribute
+    like.setAttribute("data-cocktail", JSON.stringify(cocktail));
+    //Click like
+    like.addEventListener("click", function (event) {
+      //Do not send to cocktail-details when clicking on the like
+      event.stopPropagation();
+      const cocktailDetails = JSON.parse(this.getAttribute("data-cocktail"));
+      toggleFavorite(cocktailDetails);
+
+      // Update the like image
+      this.src = checkLike(cocktailDetails);
+    });
+
     // Add the elements to the DOM tree
     cardWhite.appendChild(cocktailHeading);
     containerWhite.appendChild(cardImageWhite);
     containerWhite.appendChild(cocktailIngredientsDiv);
     cardWhite.appendChild(containerWhite);
+    cardWhite.appendChild(like);
 
     // Add the updated card to the HTML document
     cardWhiteElement.appendChild(cardWhite);

@@ -6,8 +6,12 @@
     <link rel="stylesheet" href="../styles/styles.css" />
     <link rel="stylesheet" href="../styles/nav-bar.css" />
     <script src="../js/burger_menu.js" defer></script>
-    <script src="../js/show_cocktail_details.js" defer></script>
-    <title>Cocktail Details</title>
+    <script
+      type="module"
+      src="../js/show_favorites_cocktails.js"
+      defer
+    ></script>
+    <title>Favorites</title>
   </head>
   <body>
     <header>
@@ -32,7 +36,7 @@
               >
             </li>
             <li class="nav-link">
-              <a href="../pages/favorites.html">FAVORITES</a>
+              <a href="../pages/favorites.html" class="underline">FAVORITES</a>
             </li>
             <li class="nav-link"><a href="">EXAM</a></li>
           </ul>
@@ -71,66 +75,12 @@
       </div>
     </header>
     <main>
-      <section
-        class="background-principal-color container cocktail-details-header"
-      >
-        <h2 id="cocktail-name" class="margin-titles"></h2>
-        <p id="tags" class="details-text tags-text"></p>
+      <section class="background-principal-color top-container">
+        <h2>YOUR FAVORITES COCKTAILS</h2>
       </section>
-      <section id="cocktail-details">
-        <div id="card-cocktail-details">
-          <div
-            id="img-cocktail-details"
-            class="card background-principal-color shadow-secundary-color card-cocktail-details"
-          ></div>
-          <p class="serve-cocktail-details">serve: cocktail glass</p>
-        </div>
-        <div id="instructions" class="">
-          <h2 class="margin-titles">INTRUCTIONS</h2>
-          <p class="instructions-text details-text"></p>
-          <div class="flags">
-            <img
-              id="flagEn"
-              class="flag-image"
-              src="../assets/EN.jpg"
-              alt="uk flag"
-            />
-            <img
-              id="flagFr"
-              class="flag-image"
-              src="../assets/FR.jpg"
-              alt="france flag"
-            />
-            <img
-              id="flagEs"
-              class="flag-image"
-              src="../assets/ES.png"
-              alt="spain flag"
-            />
-            <img
-              id="flagIt"
-              class="flag-image"
-              src="../assets/IT.jpg"
-              alt="italy flag"
-            />
-            <img
-              id="flagDe"
-              class="flag-image"
-              src="../assets/DE.png"
-              alt="germany flag"
-            />
-            <img
-              id="flagCa"
-              class="flag-image"
-              src="../assets/CA.png"
-              alt="catalonia flag"
-            />
-          </div>
-        </div>
-        <div id="ingredients">
-          <h2>INGREDIENTS</h2>
-        </div>
-      </section>
+      <div class="container margin-top">
+        <div id="card" class="cocktail-cards"></div>
+      </div>
     </main>
   </body>
 </html>
