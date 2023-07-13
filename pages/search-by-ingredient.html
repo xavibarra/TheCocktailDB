@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="../styles/styles.css" />
     <link rel="stylesheet" href="../styles/nav-bar.css" />
     <script src="../js/burger_menu.js" defer></script>
+    <script
+      type="module"
+      src="../js/show_serch_by_ingredient.js"
+      defer
+    ></script>
     <title>Search by ingredient</title>
   </head>
   <body>
@@ -26,7 +31,7 @@
           </div>
           <ul class="nav-links links-hidden">
             <li class="nav-link">
-              <a href="../pages/search-by-ingredient.html"
+              <a href="../pages/search-by-ingredient.html" class="underline"
                 >SEARCH BY INGREDIENT</a
               >
             </li>
@@ -76,8 +81,17 @@
           class="search-by-input"
           placeholder="Enter an ingredient"
         />
-        <button type="submit" class="button-search-ingredient">Search</button>
+        <button
+          type="submit"
+          id="buttonSearchIngredient"
+          class="button-search-ingredient"
+        >
+          <span class="text-button-ingredient">SEARCH</span>
+        </button>
       </section>
+      <div class="container margin-top">
+        <div id="card" class="cocktail-cards"></div>
+      </div>
     </main>
   </body>
 </html>

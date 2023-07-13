@@ -50,6 +50,9 @@ body {
 .hidden{
   display: none;
 }
+.underline{
+  text-decoration: underline !important;
+}
 /* AGE CHECK */
 .header-age-check{
   margin-bottom: 40px;
@@ -232,7 +235,7 @@ display: none;
 .custom-select select:focus {
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
 }
-/* SEARCH BY NAME */
+/* SEARCH COCKTAIL */
 .search-by-input{
   font-family: 'Montserrat', sans-serif;
   margin: 25px 0;
@@ -245,11 +248,29 @@ display: none;
   font-size: 1.25em;
 }
 .search-by-input::placeholder{
-
   color: rgba(117, 117, 117, 0.816);
 }
 .search-by-input:focus{
   outline: none;
+}
+/* SEARCH BY INGREDIENT */
+.button-search-ingredient{
+  all:initial;
+  background-color: white;
+  font-size: 1em;
+  margin: 25px 0;
+  border-radius: 2px;
+  height: 42px;
+  width:90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  cursor: pointer;	
+}
+.text-button-ingredient{
+  font-family: 'Montserrat', sans-serif;
+
 }
 /* TABLET SCREEN MIN:600PX MAX:1023*/
 @media screen and (min-width: 600px) {
@@ -261,12 +282,16 @@ display: none;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0 100px;
-}
-#cocktail-details{
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
+  }
+  #cocktail-details{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  /* SEARCH BY INGREDIENT */
+  .button-search-ingredient{
+    width: 110PX;
+  }
 }
 /* COMPUTER SCREEN MIN:1024PX */
 @media screen and (min-width: 1024px) {
@@ -314,9 +339,6 @@ display: none;
       order: 1;
     }  
     /* CATEGORIES */
-    .top-container{
-      justify-content: space-evenly;
-    }
     .categories-list{
       list-style: none;
       visibility: inherit;
@@ -336,4 +358,14 @@ display: none;
     .category-select{
       display: none;
     }
+    /* SEARCH BY INGREDIENT */
+    .button-search-ingredient{
+      width: 150px;
+      font-size: 1.25em;
+
+    }
+    .button-search-ingredient:hover{
+      transform:scale(1.05);
+    }
+
   }

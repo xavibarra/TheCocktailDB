@@ -1,19 +1,16 @@
-import searchCocktails from "./get_search_cocktail.js";
+import searchCocktailsIngredient from "./get_search_by_ingredient.js";
 
-// Get references to DOM elements
-const searchInput = document.querySelector("#searchCocktail");
+//Get references to DOM elements
+const searchInput = document.querySelector("#searchIngredient");
 const searchResults = document.querySelector("#card");
+const searchButton = document.querySelector("#buttonSearchIngredient");
 
-// Variable to store the search timer
-let searchTimer = null;
 async function performSearch(query) {
   try {
     // Clear previous search results
     searchResults.innerHTML = "";
 
-    // Perform the search for cocktails
-    const cocktails = await searchCocktails(query, searchResults);
-
+    const cocktails = await searchCocktailsIngredient(query, searchResults);
     // Show results
     if (cocktails && cocktails.length > 0) {
       cocktails.forEach((cocktail) => {
@@ -83,21 +80,23 @@ async function performSearch(query) {
   }
 }
 
-// Add an event listener to the search input
-searchInput.addEventListener("input", (event) => {
-  // Cancel the previous timer if it exists
-  clearTimeout(searchTimer);
-
-  // Get the search input value
-  const query = event.target.value.trim();
-
+searchButton.addEventListener("click", () => {
+  const query = searchInput.value.trim();
   if (query !== "") {
-    // Set a new timer to perform the search after 500ms
-    searchTimer = setTimeout(() => {
-      performSearch(query);
-    }, 500);
+    performSearch(query);
   } else {
-    // Clear the search results if there is no query
+    // cleaning results
     searchResults.innerHTML = "";
+  }
+});
+searchInput.addEventListener("keyup", (event) => {
+  if (event.keyCode === 13) {
+    const query = searchInput.value.trim();
+    if (query !== "") {
+      performSearch(query);
+    } else {
+      // cleaning results
+      searchResults.innerHTML = "";
+    }
   }
 });
