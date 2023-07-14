@@ -91,7 +91,7 @@ body {
   transform: scale(1.3);
 }
 .responsibility-message{
-  margin: 50px 20px 0 20px;
+  margin: 80px 20px 0 20px;
 }
 .text-card{
   padding: 30px;
@@ -212,6 +212,15 @@ body {
   margin-right: 5px;
   cursor: pointer;
 }
+#card-cocktail-details{
+  order: 1;
+}
+#ingredients{
+  order: 2;
+}
+#instructions{
+  order: 3;
+} 
 /* CATEGORIES */
 .top-container{
   display: flex;
@@ -285,6 +294,17 @@ display: none;
   font-family: 'Montserrat', sans-serif;
 
 }
+/* EXAM */
+.exam-option{
+  margin-top: 50px;
+  cursor: pointer;
+}
+.exam-option:hover{
+  transform: scale(1.05);
+}
+.exam-options-link{
+  all: unset;
+}
 /* TABLET SCREEN MIN:600PX MAX:1023*/
 @media screen and (min-width: 600px) {
  .logo-age-check{
@@ -296,15 +316,23 @@ display: none;
   grid-template-columns: repeat(2, 1fr);
   gap: 0 100px;
   }
+  /* COCKTAIL DETAILS */
   #cocktail-details{
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
+  }
+  .card-cocktail-details ,.instructions-details{
+    margin-left: 35px;
   }
   /* SEARCH BY INGREDIENT */
   .button-search-ingredient{
     width: 110PX;
   }
+  /* EXAM */
+.exam-option{
+  margin-top: 75px;
+}
 }
 /* COMPUTER SCREEN MIN:1024PX */
 @media screen and (min-width: 1024px) {
@@ -349,11 +377,20 @@ display: none;
       order: 2;
     }
     #ingredients{
-      order: 3;
+      order: 1;
+      display: flex;
+      flex-direction: column;
+
     }
     #instructions{
-      order: 1;
-    }  
+      order: 3;
+    }
+    .card-cocktail-details ,.instructions-details{
+      margin-left: 0;
+    }
+    .ingredients-container-details{
+      margin-left: 90px;
+    }
     /* CATEGORIES */
     .categories-list{
       list-style: none;

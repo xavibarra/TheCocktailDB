@@ -6,12 +6,7 @@
     <link rel="stylesheet" href="../styles/styles.css" />
     <link rel="stylesheet" href="../styles/nav-bar.css" />
     <script src="../js/burger_menu.js" defer></script>
-    <script
-      type="module"
-      src="../js/show_favorites_cocktails.js"
-      defer
-    ></script>
-    <title>Favorites</title>
+    <title>Exam options</title>
   </head>
   <body>
     <header>
@@ -36,10 +31,10 @@
               >
             </li>
             <li class="nav-link">
-              <a href="../pages/favorites.html" class="underline">FAVORITES</a>
+              <a href="../pages/favorites.html">FAVORITES</a>
             </li>
             <li class="nav-link">
-              <a href="../pages/exam-options.html">EXAM</a>
+              <a href="../pages/exam-options.html" class="underline">EXAM</a>
             </li>
           </ul>
           <button
@@ -77,12 +72,20 @@
       </div>
     </header>
     <main>
-      <section class="background-principal-color top-container">
-        <h2>YOUR FAVORITES COCKTAILS</h2>
-      </section>
-      <div class="container margin-top">
-        <div id="card" class="cocktail-cards"></div>
-      </div>
+      <a href="../pages/exam-practice-options.html" class="exam-options-link">
+        <div
+          class="text-card background-principal-color shadow-secundary-color exam-option"
+        >
+          <h2 class="max-bold centered-text">PRACTICE YOUR SKILLS</h2>
+        </div>
+      </a>
+      <a href="" class="exam-options-link">
+        <div
+          class="text-card background-principal-color shadow-secundary-color exam-option"
+        >
+          <h2 class="max-bold centered-text">DO THE EXAM</h2>
+        </div>
+      </a>
     </main>
   </body>
 </html>

@@ -125,17 +125,20 @@ if (jsonCocktail) {
     }
   }
 
+  const ingredientsDiv = document.createElement("div");
+  ingredientsDiv.classList.add("ingredients-container-details");
+  ingredientsContainer.appendChild(ingredientsDiv);
+
   // Create <p> elements for each ingredient and measure
   for (let i = 0; i < ingredients.length; i++) {
     const ingredientElement = document.createElement("p");
-    const measureElement = document.createElement("p");
 
     // Display the measure and ingredient, or just the ingredient if the measure is null
     let measureText = measures[i] !== null ? measures[i] : "";
 
     ingredientElement.textContent = `${measureText} ${ingredients[i]}`;
 
-    ingredientsContainer.appendChild(ingredientElement);
+    ingredientsDiv.appendChild(ingredientElement);
   }
 
   imageContainer.appendChild(imageElement);
