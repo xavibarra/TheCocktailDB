@@ -32,6 +32,6 @@ export default async function getCocktailOfTheDay() {
 
     return newCocktail;
   } catch (error) {
-    throw new Error("Error al obtener el cóctel del día");
+    throw new Error("Error getting the cocktail of the day");
   }
 }
