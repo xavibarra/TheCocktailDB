@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="../styles/nav-bar.css" />
     <link rel="stylesheet" href="../styles/styles.css" />
     <script src="../js/burger_menu.js" defer></script>
+    <script
+      src="../js/check_ingredients_options.js"
+      type="module"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.11.0/tsparticles.confetti.bundle.min.js"></script>
     <title>Choose the ingredients</title>
   </head>
   <body>
@@ -15,7 +21,7 @@
         <nav class="nav-bar">
           <ul class="nav-links links-hidden">
             <li class="nav-link">
-              <a href="../pages/home.html" class="underline">HOME</a>
+              <a href="../pages/home.html">HOME</a>
             </li>
             <li class="nav-link">
               <a href="../pages/categories.html">CATEGORIES</a>
@@ -37,7 +43,7 @@
               <a href="../pages/favorites.html">FAVORITES</a>
             </li>
             <li class="nav-link">
-              <a href="../pages/exam-options.html">EXAM</a>
+              <a href="../pages/exam-options.html" class="underline">EXAM</a>
             </li>
           </ul>
           <button
@@ -74,6 +80,29 @@
         </div>
       </div>
     </header>
-    <main></main>
+    <main>
+      <section class="background-principal-color top-container">
+        <h2 class="exam-option-title">CHOOSE THE RIGHT COCKTAIL INGREDIENTS</h2>
+      </section>
+      <section>
+        <div id="card" class="cocktail-cards"></div>
+        <div id="ingredients-options"></div>
+        <button type="submit" id="submit-ingredients-options">SUBMIT</button>
+        <div
+          id="correct-ingredients-options"
+          class="text-card background-principal-color shadow-secundary-color margin-top centered-text hidden"
+        >
+          <h2>Your answer is correct!</h2>
+        </div>
+        <div
+          id="incorrect-ingredients-options"
+          class="text-card background-principal-color shadow-secundary-color margin-top centered-text hidden"
+        >
+          <h2>Your answer is not correct!</h2>
+          <h3 class="margin-top">Correct answer:</h3>
+        </div>
+        <button id="next-cocktail" class="hidden">Next</button>
+      </section>
+    </main>
   </body>
 </html>

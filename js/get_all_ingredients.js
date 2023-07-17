@@ -5,7 +5,7 @@ export default async function getAllIngredients() {
     );
     const data = await response.json();
     const allIngredients = data.drinks.map((drink) => drink.strIngredient1);
-    console.log(allIngredients);
+    return allIngredients;
   } catch (error) {
     throw error;
   }
