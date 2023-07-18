@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Choose category</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles/nav-bar.css" />
+    <link rel="icon" type="image/png" href="../assets/cocktail.png" />
+    <script src="../js/burger_menu.js" defer></script>
+    <script type="module" src="../js/check_category_practice.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.11.0/tsparticles.confetti.bundle.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="nav-bar-full-screen">
+        <nav class="nav-bar">
+          <ul class="nav-links links-hidden">
+            <li class="nav-link"><a href="../pages/home.html">HOME</a></li>
+            <li class="nav-link">
+              <a href="../pages/categories.html">CATEGORIES</a>
+            </li>
+            <li class="nav-link">
+              <a href="../pages/search-by-name.html">SEARCH BY NAME</a>
+            </li>
+          </ul>
+          <div class="logo">
+            <img src="../../assets/logo-02.png" alt="" class="logo-img" />
+          </div>
+          <ul class="nav-links links-hidden">
+            <li class="nav-link">
+              <a href="../pages/search-by-ingredient.html"
+                >SEARCH BY INGREDIENT</a
+              >
+            </li>
+            <li class="nav-link">
+              <a href="../pages/favorites.html">FAVORITES</a>
+            </li>
+            <li class="nav-link">
+              <a href="../pages/exam-options.html" class="underline">EXAM</a>
+            </li>
+          </ul>
+          <button
+            id="menuButton"
+            class="menu-icon large"
+            aria-label="Main Menu"
+          >
+            <svg width="60" height="60" viewBox="0 0 100 100">
+              <path
+                class="line line1"
+                d="M20,29 H80 C80,29 94.5,28.8 94.5,66.7 C94.5,77.98 91,81.67 85.3,81.67 C79.6,81.67 75,75 75,75 L25,25"
+              />
+              <path class="line line2" d="M20,50 H80" />
+              <path
+                class="line line3"
+                d="M20,71 H80 C80,71 94.5,71.2 94.5,33.3 C94.5,22.02 91,18.33 85.3,18.33 C79.6,18.33 75,25 75,25 L25,75"
+              />
+            </svg>
+          </button>
+        </nav>
+        <div class="container-burger-menu">
+          <ul class="nav-links">
+            <li><a href="../pages/home.html">HOME</a></li>
+            <li><a href="../pages/categories.html">CATEGORIES</a></li>
+            <li><a href="../pages/search-by-name.html">SEARCH BY NAME</a></li>
+            <li>
+              <a href="../pages/search-by-ingredient.html"
+                >SEARCH BY INGREDIENT</a
+              >
+            </li>
+            <li><a href="../pages/favorites.html">FAVORITES</a></li>
+            <li><a href="../pages/exam-options.html">EXAM</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="background-principal-color top-container">
+        <h2 class="exam-option-title">CHOOSE THE RIGHT COCKTAIL CATEGORY</h2>
+      </section>
+      <div id="card" class="exam-card margin-top"></div>
+      <div
+        id="categoryNotSelected"
+        class="text-card background-principal-color shadow-secundary-color centered-text hidden"
+      >
+        You have not selected any category
+      </div>
+      <div class="ingredients-options" id="ingredientOptions">
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Ordinary Drink"
+        >
+          Ordinary drinks
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Cocktail"
+        >
+          Cocktail
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Homemade Liqueur"
+        >
+          Homemade Liqueur
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Punch / Party Drink"
+        >
+          Punch
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Beer"
+        >
+          Beer
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Soft Drink"
+        >
+          Soft Drink
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Coffee / Tea"
+        >
+          Coffee/Tea
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Shot"
+        >
+          Shot
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Shake"
+        >
+          Shake
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Cocoa"
+        >
+          Cocoa
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Other / Unknown"
+        >
+          Other
+        </h3>
+      </div>
+      <div
+        id="correct-ingredients-options"
+        class="text-card background-principal-color shadow-secundary-color margin-top centered-text hidden"
+      >
+        <h2>Your answer is correct!</h2>
+      </div>
+      <div
+        id="incorrect-ingredients-options"
+        class="text-card background-principal-color shadow-secundary-color margin-top centered-text hidden"
+      >
+        <h2>Your answer is not correct!</h2>
+        <h3 class="margin-top">Correct answer:</h3>
+        <p id="correctAnswer"></p>
+      </div>
+      <div class="exam-practise-buttons">
+        <a class="exam-options-link" href="../pages/exam-practice-options.html"
+          ><button
+            class="next-exercise-exam background-secundary-color white-text"
+          >
+            BACK
+          </button></a
+        >
+        <button
+          type="submit"
+          id="submit-ingredients-options"
+          class="next-exercise-exam background-principal-color"
+        >
+          SUBMIT
+        </button>
+        <button
+          id="next-cocktail"
+          class="next-exercise-exam background-principal-color hidden"
+        >
+          NEXT
+        </button>
+      </div>
+    </main>
+  </body>
+</html>

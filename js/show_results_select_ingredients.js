@@ -3,7 +3,6 @@ import launchConfetti from "./confeti.js";
 export function showResults(result) {
   if (result) {
     // Result is true, show success message
-    console.log("The result is true");
     const correctMessage = document.getElementById(
       "correct-ingredients-options"
     );
@@ -13,7 +12,6 @@ export function showResults(result) {
     launchConfetti();
   } else {
     // Result is false, show error message
-    console.log("The result is false");
     const incorrectMessage = document.getElementById(
       "incorrect-ingredients-options"
     );
