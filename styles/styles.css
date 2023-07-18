@@ -48,11 +48,12 @@ body {
   text-align: center;
 }
 .hidden{
-  display: none;
+  display: none !important;
 }
 .underline{
   text-decoration: underline !important;
 }
+
 /* AGE CHECK */
 .header-age-check{
   margin-bottom: 40px;
@@ -275,7 +276,10 @@ display: none;
 .search-by-input:focus{
   outline: none;
 }
+
+
 /* SEARCH BY INGREDIENT */
+
 .button-search-ingredient{
   all:initial;
   background-color: white;
@@ -295,6 +299,11 @@ display: none;
 
 }
 /* EXAM */
+.exam-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .exam-option{
   margin-top: 50px;
   cursor: pointer;
@@ -330,10 +339,25 @@ display: none;
   margin-top: 20px;
   margin-bottom: 5px;
 }
+.next-exercise-exam{
+  cursor: pointer;
+
+  padding: 20px 40px;
+  border: #000000 3px solid;
+ margin: 0 15px 30px 15px;
+}
+.next-exercise-exam:hover{
+ transform: scale(1.15);
+}
+.exam-practise-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* Select cocktail ingredients */
 .ingredient-option{
   cursor: pointer;
-  margin-top: 10px;
+  margin: 15px;
   width: 120px;
   height: 80px;
   display: flex;
@@ -342,6 +366,11 @@ display: none;
   text-align: center;
   border: 4px solid transparent;
   transition: border-color 0.6s ease;
+}
+.ingredients-options{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .ingredient-option:hover{
   border-color: var(--secundary-color);

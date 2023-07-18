@@ -1,63 +1,61 @@
 import getRandomCocktail from "./get_random_cocktail.js";
 import getAllIngredients from "./get_all_ingredients.js";
-import { showResults } from "./show_results_select_ingredients.js"; // Importamos la función desde el otro archivo
+import { showResults } from "./show_results_select_ingredients.js";
 
 let cocktailIngredients = [];
 let selectedIngredients = [];
 
 async function showRandomCocktail() {
   try {
-    // Obtener el cóctel aleatorio
+    // Get a random cocktail
     const cocktail = await getRandomCocktail();
 
-    // Obtener todos los ingredientes del cóctel
+    // Get all ingredients of the cocktail
     const ingredients = Object.entries(cocktail)
       .filter(([key, value]) => key.startsWith("strIngredient") && value)
       .map(([key, value]) => value);
 
-    // Mostrar los ingredientes por consola (puedes eliminar esta línea si no necesitas el log)
-    console.log(ingredients);
-
-    // Mostrar la tarjeta del cóctel aleatorio
-    // Crear el elemento div principal
+    // Show the random cocktail card
+    // Create the main div element
     const card = document.createElement("div");
     card.classList.add(
       "card-exam",
       "background-secundary-color",
       "shadow-principal-color"
     );
-    // Crear el elemento h2 para el nombre del cóctel
+    // Create the h2 element for the cocktail name
     const heading = document.createElement("h2");
     heading.classList.add("card-text", "white-text");
     heading.textContent = cocktail.strDrink;
-    // Crear el elemento div contenedor
+    // Create the container div element
     const container = document.createElement("div");
     container.classList.add("container");
 
-    // Crear el elemento div para la imagen del cóctel
+    // Create the div element for the cocktail image
     const cardImage = document.createElement("div");
     cardImage.classList.add("card-image-exam");
 
-    // Crear el elemento img para la imagen del cóctel
+    // Create the img element for the cocktail image
     const image = document.createElement("img");
     image.classList.add("cocktail-image-exam");
     image.src = cocktail.strDrinkThumb;
     image.alt = cocktail.strDrink + " Image";
 
-    // Agregar la imagen al elemento de la imagen de la tarjeta
+    // Add the image to the card image element
     cardImage.appendChild(image);
-    // Agregar los elementos al árbol DOM
+    // Add elements to the DOM tree
     card.appendChild(heading);
     container.appendChild(cardImage);
 
     card.appendChild(container);
 
-    // Agregar la tarjeta al documento HTML
+    // Add the card to the HTML document
     document.querySelector("#card").appendChild(card);
 
-    //agregar los ingredientes por si el usuario responde mal
+    // Add the ingredients in case the user responds incorrectly
     // Create the list element for the ingredients
     const cocktailIngredientsList = document.createElement("ul");
+    cocktailIngredientsList.style.listStyle = "none";
 
     // Add each ingredient as a list item
     ingredients.forEach((ingredient) => {
@@ -75,21 +73,21 @@ async function showRandomCocktail() {
     throw error;
   }
 }
-// Obtener un array con todos los ingredientes y eliminar los que son correctos
+
+// Get an array with all ingredients and remove the correct ones
 async function optionsIngredients() {
   try {
-    // Obtener todos los ingredientes y compararlos con los correctos para obtener solo los incorrectos
+    // Get all ingredients and compare them with the correct ones to get only the incorrect ones
     const ingredients = await getAllIngredients();
     cocktailIngredients = await showRandomCocktail();
     const incorrectIngredients = ingredients.filter(
       (ingredient) => !cocktailIngredients.includes(ingredient)
     );
-    console.log(incorrectIngredients);
 
-    // Calcular cuántos ingredientes incorrectos se necesitan para obtener 25 ingredientes
+    // Calculate how many incorrect ingredients are needed to have 25 ingredients
     const numberOfWrongIngredients = 25 - cocktailIngredients.length;
 
-    // Obtener este número de ingredientes incorrectos
+    // Get this number of incorrect ingredients
     let wrongIngredientsOptions = [];
     let indexUsed = [];
     while (wrongIngredientsOptions.length < numberOfWrongIngredients) {
@@ -101,14 +99,13 @@ async function optionsIngredients() {
         wrongIngredientsOptions.push(incorrectIngredients[randomIndex]);
       }
     }
-    console.log(wrongIngredientsOptions);
 
-    // Concatenar los ingredientes correctos con los incorrectos
+    // Concatenate the correct ingredients with the incorrect ones
     const ingredientsOptions =
       wrongIngredientsOptions.concat(cocktailIngredients);
-    console.log(ingredientsOptions);
+    console.log("correct answer: " + cocktailIngredients);
 
-    // Barajar la lista de ingredientes usando el algoritmo Fisher-Yates
+    // Shuffle the list of ingredients using the Fisher-Yates algorithm
     for (let i = ingredientsOptions.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [ingredientsOptions[i], ingredientsOptions[j]] = [
@@ -116,8 +113,6 @@ async function optionsIngredients() {
         ingredientsOptions[i],
       ];
     }
-
-    console.log("Final Ingredients List (Shuffled):", ingredientsOptions);
 
     return ingredientsOptions;
   } catch (error) {
@@ -168,13 +163,9 @@ function toggleIngredientSelection(event) {
     // Activate the border color
     clickedH3.style.borderColor = "var(--secundary-color)";
   }
-
-  console.log("Selected Ingredients:", selectedIngredients);
 }
 
 function compareIngredients(selectedIngredients, cocktailIngredients) {
-  console.log(selectedIngredients);
-  console.log(cocktailIngredients);
   if (selectedIngredients.length !== cocktailIngredients.length) {
     return false;
   }
@@ -189,17 +180,17 @@ function compareIngredients(selectedIngredients, cocktailIngredients) {
   return true;
 }
 
-// Función para limpiar el HTML
+// Function to clear the HTML
 function clearHTML() {
-  // Eliminar la tarjeta del cóctel aleatorio
+  // Remove the random cocktail card
   const cardElement = document.querySelector("#card");
   cardElement.innerHTML = "";
 
-  // Eliminar la lista de ingredientes
+  // Remove the list of ingredients
   const ingredientsOptionsDiv = document.querySelector("#ingredients-options");
   ingredientsOptionsDiv.innerHTML = "";
 
-  // Reiniciar las variables almacenadas
+  // Reset the stored variables
   cocktailIngredients = [];
   selectedIngredients = [];
 }
@@ -213,26 +204,25 @@ document.addEventListener("DOMContentLoaded", async () => {
     const nextButton = document.getElementById("next-cocktail");
 
     submitButton.addEventListener("click", () => {
-      // Obtener los nombres de los ingredientes seleccionados
+      // Get the names of the selected ingredients
       const selectedIngredientsArray = selectedIngredients;
-      // Llamar a compareIngredients aquí
+      // Call compareIngredients here
       const result = compareIngredients(
         selectedIngredientsArray,
         cocktailIngredients
       );
-      console.log("¿Los ingredientes coinciden?", result);
-      // Llamar a la función importada para utilizar el resultado (result)
+      // Call the imported function to use the result
       showResults(result);
 
-      // Limpiar el HTML después de mostrar el resultado
+      // Clear the HTML after showing the result
       clearHTML();
 
-      // Mostrar el botón "Next" y ocultar el botón "Submit"
+      // Show the "Next" button and hide the "Submit" button
       submitButton.classList.add("hidden");
       nextButton.classList.remove("hidden");
     });
     nextButton.addEventListener("click", async () => {
-      // Limpiar el HTML y reiniciar las variables
+      // Clear the HTML and reset the variables
       clearHTML();
       const correctMessage = document.getElementById(
         "correct-ingredients-options"
@@ -243,11 +233,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       correctMessage.classList.add("hidden");
       incorrectMessage.classList.add("hidden");
 
-      // Ocultar el botón "Next" y mostrar el botón "Submit"
+      // Hide the "Next" button and show the "Submit" button
       nextButton.classList.add("hidden");
       submitButton.classList.remove("hidden");
 
-      // Cargar una nueva bebida
+      // Load a new cocktail
       const ingredientsOptions = await optionsIngredients();
       await showIngredients(ingredientsOptions);
     });
