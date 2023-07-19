@@ -1,27 +1,28 @@
+// Import getRandomCocktail function from "./get_random_cocktail.js";
 import getRandomCocktail from "./get_random_cocktail.js";
 import { showResults } from "./show_results_select_ingredients.js";
 
-let currentCategory; // Declare a global variable to store the current category
-let categorySelected = [];
+let currentGlass; // Declare a global variable to store the current glass
+let glassSelected = [];
 
-function toggleCategorySelection(event) {
+function toggleGlassSelection(event) {
   const clickedElement = event.target;
 
-  // Check if the categorySelected array is not empty
-  if (categorySelected.length > 0) {
+  // Check if the glassSelected array is not empty
+  if (glassSelected.length > 0) {
     // Get the previously selected h3 element
-    const previousSelected = categorySelected.pop();
+    const previousSelected = glassSelected.pop();
     // Set its border color to transparent
     previousSelected.style.borderColor = "transparent";
   }
 
-  // Store the clicked h3 element in the categorySelected array
-  categorySelected.push(clickedElement);
+  // Store the clicked h3 element in the glassSelected array
+  glassSelected.push(clickedElement);
   // Set its border color to black
   clickedElement.style.borderColor = "black";
 
-  // Now, you can access the selected category using "currentCategory" or "clickedElement.dataset.name" (data-name attribute)
-  currentCategory = clickedElement.dataset.name;
+  // Now, you can access the selected glass using "currentGlass" or "clickedElement.dataset.name" (data-name attribute)
+  currentGlass = clickedElement.dataset.name;
 }
 
 async function showRandomCocktail() {
@@ -65,18 +66,18 @@ async function showRandomCocktail() {
     card.appendChild(heading);
     card.appendChild(container);
 
-    const correctCategory = document.getElementById("correctAnswer");
-    correctCategory.textContent = cocktail.strCategory;
+    const correctGlass = document.getElementById("correctAnswer");
+    correctGlass.textContent = cocktail.strGlass;
 
     // Add the card to the HTML document
     document.querySelector("#card").appendChild(card);
 
-    // Store the current category in the global variable
-    currentCategory = cocktail.strCategory;
+    // Store the current glass in the global variable
+    currentGlass = cocktail.strGlass;
 
-    console.log("correct answer: " + cocktail.strCategory);
+    console.log("correct glass: " + cocktail.strGlass);
 
-    return currentCategory;
+    return currentGlass;
   } catch (error) {
     throw error;
   }
@@ -94,7 +95,7 @@ function showTemporalMessage() {
   const message = document.getElementById("categoryNotSelected");
   message.classList.remove("hidden"); // Mostrar el mensaje
 
-  // Después de 1 segundo (1000 ms), ocultar el mensaje
+  // Después de 3 segundos (1000 ms), ocultar el mensaje
   setTimeout(function () {
     message.classList.add("hidden"); // Ocultar el mensaje
   }, 1000);
@@ -102,13 +103,13 @@ function showTemporalMessage() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    let category = "Unknown";
-    let currentCategory = await showRandomCocktail();
+    let glass = "Unknown";
+    let currentGlass = await showRandomCocktail();
 
     // Add click event listeners to each <h3> element
     const h3Elements = document.querySelectorAll(".ingredient-option");
     h3Elements.forEach((h3) => {
-      h3.addEventListener("click", toggleCategorySelection);
+      h3.addEventListener("click", toggleGlassSelection);
     });
 
     const submitButton = document.getElementById("submit-ingredients-options");
@@ -116,33 +117,33 @@ document.addEventListener("DOMContentLoaded", async () => {
     const ingredientOptions = document.getElementById("ingredientOptions");
 
     submitButton.addEventListener("click", () => {
-      // Verificar si alguna categoría ha sido seleccionada
-      if (categorySelected.length > 0) {
+      // Verificar si alguna glass ha sido seleccionada
+      if (glassSelected.length > 0) {
         // Clear the HTML after showing the result
         clearHTML();
         // Show the "Next" button and hide the "Submit" button
         submitButton.classList.add("hidden");
         nextButton.classList.remove("hidden");
         ingredientOptions.classList.add("hidden");
-        // Obtener la categoría seleccionada
-        category = categorySelected[0].dataset.name;
-        // Comparar la categoría seleccionada con la categoría actual del cóctel
-        let result = category === currentCategory;
+        // Obtener la glass seleccionada
+        glass = glassSelected[0].dataset.name;
+        // Comparar la glass seleccionada con la glass actual del cóctel
+        let result = glass === currentGlass;
         showResults(result);
       } else {
-        // Si no se ha seleccionado ninguna categoría, mostrar mensaje de error o realizar alguna otra acción
-        console.log("No se ha seleccionado ninguna categoría.");
+        // Si no se ha seleccionado ninguna glass, mostrar mensaje de error o realizar alguna otra acción
+        console.log("No se ha seleccionado ninguna glass.");
         showTemporalMessage();
       }
     });
 
     nextButton.addEventListener("click", async () => {
-      const correctCategory = document.getElementById("correctAnswer");
-      correctCategory.textContent = "";
+      const correctGlass = document.getElementById("correctAnswer");
+      correctGlass.textContent = "";
 
       // Limpiar selecciones anteriores y restablecer el borde
-      if (categorySelected.length > 0) {
-        const previousSelected = categorySelected.pop();
+      if (glassSelected.length > 0) {
+        const previousSelected = glassSelected.pop();
         previousSelected.style.borderColor = "transparent";
       }
 
@@ -162,8 +163,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       submitButton.classList.remove("hidden");
       ingredientOptions.classList.remove("hidden");
 
-      // Call showRandomCocktail and update the currentCategory variable
-      currentCategory = await showRandomCocktail();
+      // Call showRandomCocktail and update the currentGlass variable
+      currentGlass = await showRandomCocktail();
     });
   } catch (error) {
     console.error("Error:", error);

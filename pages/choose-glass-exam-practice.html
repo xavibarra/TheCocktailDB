@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../styles/nav-bar.css" />
     <link rel="icon" type="image/png" href="../assets/cocktail.png" />
     <script src="../js/burger_menu.js" defer></script>
-    <script type="module" src="../js/check_category_practice.js" defer></script>
+    <script type="module" src="../js/check_glasses_practice.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.11.0/tsparticles.confetti.bundle.min.js"></script>
   </head>
   <body>
@@ -79,12 +79,7 @@
         <h2 class="exam-option-title">CHOOSE THE RIGHT COCKTAIL CATEGORY</h2>
       </section>
       <div id="card" class="exam-card margin-top"></div>
-      <div
-        id="categoryNotSelected"
-        class="text-card background-principal-color shadow-secundary-color centered-text hidden"
-      >
-        You have not selected any category
-      </div>
+
       <div class="ingredients-options" id="ingredientOptions">
         <h3
           class="background-principal-color ingredient-option"
@@ -94,64 +89,196 @@
         </h3>
         <h3
           class="background-principal-color ingredient-option"
-          data-name="Cocktail"
+          data-name="Cocktail glass"
         >
-          Cocktail
+          Cocktail glass
         </h3>
         <h3
           class="background-principal-color ingredient-option"
-          data-name="Homemade Liqueur"
+          data-name="Old-fashioned glass"
         >
-          Homemade Liqueur
+          Old-fashioned glass
         </h3>
         <h3
           class="background-principal-color ingredient-option"
-          data-name="Punch / Party Drink"
+          data-name="Whiskey Glass"
         >
-          Punch
+          Whiskey Glass
         </h3>
         <h3
           class="background-principal-color ingredient-option"
-          data-name="Beer"
+          data-name="Collins glass"
         >
-          Beer
+          Collins glass
         </h3>
         <h3
           class="background-principal-color ingredient-option"
-          data-name="Soft Drink"
+          data-name="Pousse cafe glass"
         >
-          Soft Drink
+          Pousse cafe glass
         </h3>
         <h3
           class="background-principal-color ingredient-option"
-          data-name="Coffee / Tea"
+          data-name="Champagne flute"
         >
-          Coffee/Tea
+          Champagne flute
         </h3>
         <h3
           class="background-principal-color ingredient-option"
-          data-name="Shot"
+          data-name="Whiskey sour glass"
         >
-          Shot
+          Whiskey sour glass
         </h3>
         <h3
           class="background-principal-color ingredient-option"
-          data-name="Shake"
+          data-name="Cordial glass"
         >
-          Shake
+          Cordial glass
         </h3>
         <h3
           class="background-principal-color ingredient-option"
-          data-name="Cocoa"
+          data-name="Brandy snifter"
         >
-          Cocoa
+          Brandy snifter
         </h3>
         <h3
           class="background-principal-color ingredient-option"
-          data-name="Other / Unknown"
+          data-name="White wine glass"
         >
-          Other
+          White wine glass
         </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Nick and Nora Glass"
+        >
+          Nick and Nora Glass
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Hurricane glass"
+        >
+          Hurricane glass
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Coffee mug"
+        >
+          Coffee mug
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Shot glass"
+        >
+          Shot glass
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Jar"
+        >
+          Jar
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Irish coffee cup"
+        >
+          Irish coffee cup
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Punch bowl"
+        >
+          Punch bowl
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Pitcher"
+        >
+          Pitcher
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Pint glass"
+        >
+          Pint glass
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Copper Mug"
+        >
+          Copper Mug
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Wine Glass"
+        >
+          Wine Glass
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Beer mug"
+        >
+          Beer mug
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Margarita/Coupette glass"
+        >
+          Coupette glass
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Beer pilsner"
+        >
+          Beer pilsner
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Beer Glass"
+        >
+          Beer Glass
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Parfait glass"
+        >
+          Parfait glass
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Mason jar"
+        >
+          Mason jar
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Margarita glass"
+        >
+          Margarita glass
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Martini Glass"
+        >
+          Martini Glass
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Balloon Glass"
+        >
+          Balloon Glass
+        </h3>
+        <h3
+          class="background-principal-color ingredient-option"
+          data-name="Coupe Glass"
+        >
+          Coupe Glass
+        </h3>
+      </div>
+      <div
+        id="categoryNotSelected"
+        class="text-card background-principal-color shadow-secundary-color centered-text hidden"
+      >
+        You have not selected any glass
       </div>
       <div
         id="correct-ingredients-options"

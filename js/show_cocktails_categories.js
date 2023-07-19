@@ -12,6 +12,10 @@ categorySelect.addEventListener("change", function () {
     categoriesResults.innerHTML = "";
     showCocktailsCategories(selectedValue);
   }
+  const categoryTitle = document.getElementById("category-name");
+  categoryTitle.textContent =
+    categorySelect.value.replace(/_/g, " ").charAt(0).toUpperCase() +
+    categorySelect.value.replace(/_/g, " ").slice(1);
 });
 // Event listener for list
 const listItems = categoryList.getElementsByTagName("li");
@@ -22,6 +26,8 @@ for (let i = 0; i < listItems.length; i++) {
       categoriesResults.innerHTML = "";
       showCocktailsCategories(selectedValue);
     }
+    const categoryTitle = document.getElementById("category-name");
+    categoryTitle.textContent = listItems[i].textContent;
   });
 }
 

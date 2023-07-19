@@ -3,12 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Choose category</title>
+    <title>choose cocktail</title>
     <link rel="stylesheet" href="../styles/styles.css" />
     <link rel="stylesheet" href="../styles/nav-bar.css" />
     <link rel="icon" type="image/png" href="../assets/cocktail.png" />
     <script src="../js/burger_menu.js" defer></script>
-    <script type="module" src="../js/check_category_practice.js" defer></script>
+    <script
+      src="../js/check_cocktail_by_ingredients.js"
+      type="module"
+      defer
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.11.0/tsparticles.confetti.bundle.min.js"></script>
   </head>
   <body>
@@ -76,83 +80,12 @@
     </header>
     <main>
       <section class="background-principal-color top-container">
-        <h2 class="exam-option-title">CHOOSE THE RIGHT COCKTAIL CATEGORY</h2>
+        <h2 class="exam-option-title">
+          CHOOSE THE COCKTAIL ACCORDING TO THE INGREDIENTS
+        </h2>
       </section>
-      <div id="card" class="exam-card margin-top"></div>
-      <div class="ingredients-options" id="ingredientOptions">
-        <h3
-          class="background-principal-color ingredient-option"
-          data-name="Ordinary Drink"
-        >
-          Ordinary drinks
-        </h3>
-        <h3
-          class="background-principal-color ingredient-option"
-          data-name="Cocktail"
-        >
-          Cocktail
-        </h3>
-        <h3
-          class="background-principal-color ingredient-option"
-          data-name="Homemade Liqueur"
-        >
-          Homemade Liqueur
-        </h3>
-        <h3
-          class="background-principal-color ingredient-option"
-          data-name="Punch / Party Drink"
-        >
-          Punch
-        </h3>
-        <h3
-          class="background-principal-color ingredient-option"
-          data-name="Beer"
-        >
-          Beer
-        </h3>
-        <h3
-          class="background-principal-color ingredient-option"
-          data-name="Soft Drink"
-        >
-          Soft Drink
-        </h3>
-        <h3
-          class="background-principal-color ingredient-option"
-          data-name="Coffee / Tea"
-        >
-          Coffee/Tea
-        </h3>
-        <h3
-          class="background-principal-color ingredient-option"
-          data-name="Shot"
-        >
-          Shot
-        </h3>
-        <h3
-          class="background-principal-color ingredient-option"
-          data-name="Shake"
-        >
-          Shake
-        </h3>
-        <h3
-          class="background-principal-color ingredient-option"
-          data-name="Cocoa"
-        >
-          Cocoa
-        </h3>
-        <h3
-          class="background-principal-color ingredient-option"
-          data-name="Other / Unknown"
-        >
-          Other
-        </h3>
-      </div>
-      <div
-        id="categoryNotSelected"
-        class="text-card background-principal-color shadow-secundary-color centered-text hidden"
-      >
-        You have not selected any category
-      </div>
+      <section id="showIngredients" class="ingredients-options"></section>
+
       <div
         id="correct-ingredients-options"
         class="text-card background-principal-color shadow-secundary-color margin-top centered-text hidden"
@@ -166,6 +99,29 @@
         <h2>Your answer is not correct!</h2>
         <h3 class="margin-top">Correct answer:</h3>
         <p id="correctAnswer"></p>
+      </div>
+      <div class="container" id="container-cocktail-options">
+        <h2 class="max-bold margin-titles">CHOOSE COCKTAIL:</h2>
+        <div
+          id="cocktailNotSelected"
+          class="text-card background-principal-color shadow-secundary-color centered-text hidden"
+        >
+          You have not selected any cocktail
+        </div>
+        <div class="cocktail-cards-options">
+          <div
+            id="firstCocktail"
+            class="choose-cocktail background-principal-color"
+          ></div>
+          <div
+            id="secondCocktail"
+            class="choose-cocktail background-principal-color"
+          ></div>
+          <div
+            id="thirdCocktail"
+            class="choose-cocktail background-principal-color"
+          ></div>
+        </div>
       </div>
       <div class="exam-practise-buttons">
         <a class="exam-options-link" href="../pages/exam-practice-options.html"
