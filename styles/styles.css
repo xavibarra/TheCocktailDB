@@ -351,17 +351,18 @@ display: none;
 }
 .next-exercise-exam{
   cursor: pointer;
-
   padding: 20px 40px;
   border: #000000 3px solid;
- margin: 0 15px 30px 15px;
+  margin: 0 15px 30px 15px;
+  background-color: #000000;
+  color: white;
 }
 .next-exercise-exam:hover{
  transform: scale(1.15);
 }
 .exam-practise-buttons{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 /* Select cocktail ingredients */

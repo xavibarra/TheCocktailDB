@@ -184,6 +184,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         showTemporalMessage();
       } else {
         clearHTML();
+        selectedCocktailDiv.style.borderColor = "transparent";
         submitButton.classList.add("hidden");
         nextButton.classList.remove("hidden");
         const selectedCocktailId = selectedCocktailDiv.dataset.name;
