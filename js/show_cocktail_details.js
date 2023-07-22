@@ -121,7 +121,7 @@ if (jsonCocktail) {
       ingredients.push(cocktail[ingredientKey]);
       measures.push(cocktail[measureKey]);
     } else {
-      break; // Stop the loop if an empty ingredient is encountered
+      break;
     }
   }
 

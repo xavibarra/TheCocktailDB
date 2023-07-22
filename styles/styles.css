@@ -290,6 +290,13 @@ display: none;
 
 
 /* SEARCH BY INGREDIENT */
+.top-container-search-ingredient{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  height: 90px;
+}
 
 .button-search-ingredient{
   all:initial;
