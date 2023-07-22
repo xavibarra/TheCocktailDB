@@ -1,9 +1,28 @@
 // Import getRandomCocktail function from "./get_random_cocktail.js";
 import getRandomCocktail from "./get_random_cocktail.js";
-import { showResults } from "./show_results_select_ingredients.js";
+import { showResults } from "./show_results.js";
 
 let currentGlass; // Declare a global variable to store the current glass
 let glassSelected = [];
+
+let count = 0;
+let record;
+// Check if there is a value saved in Local Storage
+const recordFromLocalStorage = localStorage.getItem("recordFourthExercice");
+if (recordFromLocalStorage !== null) {
+  // If there is a saved value, assign it to the 'record' variable
+  record = parseInt(recordFromLocalStorage, 10);
+} else {
+  // If there is no saved value, assign 0 to the 'record' variable
+  record = 0;
+  // Save the value 0 in the Local Storage
+  localStorage.setItem("recordFourthExercice", 0);
+}
+const countText = document.getElementById("correctAnswers");
+countText.textContent = count;
+
+const recordText = document.getElementById("record");
+recordText.textContent = record;
 
 function toggleGlassSelection(event) {
   const clickedElement = event.target;
@@ -130,6 +149,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         // Comparar la glass seleccionada con la glass actual del cóctel
         let result = glass === currentGlass;
         showResults(result);
+        if (result) {
+          count++;
+          countText.textContent = count;
+          if (count > record) {
+            record = count;
+            recordText.textContent = record;
+            localStorage.setItem("recordFourthExercice", record);
+          }
+        } else {
+          count = 0;
+          countText.textContent = count;
+        }
       } else {
         // Si no se ha seleccionado ninguna glass, mostrar mensaje de error o realizar alguna otra acción
         console.log("No se ha seleccionado ninguna glass.");

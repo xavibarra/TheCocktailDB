@@ -237,6 +237,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   height: 90px;
 }
 .categories-list{
@@ -365,6 +366,12 @@ display: none;
   justify-content: space-around;
   align-items: center;
 }
+.counter{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
 /* Select cocktail ingredients */
 .ingredient-option{
   cursor: pointer;
@@ -475,7 +482,7 @@ justify-content: center;
   }
   /* EXAM */
 .exam-option{
-  margin-top: 75px;
+  margin-top: 60px;
   }
 
 }

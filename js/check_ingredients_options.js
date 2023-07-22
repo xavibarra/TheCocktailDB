@@ -1,9 +1,28 @@
 import getRandomCocktail from "./get_random_cocktail.js";
 import getAllIngredients from "./get_all_ingredients.js";
-import { showResults } from "./show_results_select_ingredients.js";
+import { showResults } from "./show_results.js";
 
 let cocktailIngredients = [];
 let selectedIngredients = [];
+
+let count = 0;
+let record;
+// Check if there is a value saved in Local Storage
+const recordFromLocalStorage = localStorage.getItem("recordFifthExercice");
+if (recordFromLocalStorage !== null) {
+  // If there is a saved value, assign it to the 'record' variable
+  record = parseInt(recordFromLocalStorage, 10);
+} else {
+  // If there is no saved value, assign 0 to the 'record' variable
+  record = 0;
+  // Save the value 0 in the Local Storage
+  localStorage.setItem("recordFifthExercice", 0);
+}
+const countText = document.getElementById("correctAnswers");
+countText.textContent = count;
+
+const recordText = document.getElementById("record");
+recordText.textContent = record;
 
 async function showRandomCocktail() {
   try {
@@ -213,6 +232,18 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
       // Call the imported function to use the result
       showResults(result);
+      if (result) {
+        count++;
+        countText.textContent = count;
+        if (count > record) {
+          record = count;
+          recordText.textContent = record;
+          localStorage.setItem("recordFifthExercice", record);
+        }
+      } else {
+        count = 0;
+        countText.textContent = count;
+      }
 
       // Clear the HTML after showing the result
       clearHTML();

@@ -1,7 +1,25 @@
 import getRandomCocktail from "./get_random_cocktail.js";
 import getFiveIdRandom from "./get_five_idcocktail_random.js";
-import { showResults } from "./show_results_select_ingredients.js";
+import { showResults } from "./show_results.js";
 let cocktailId = null;
+let count = 0;
+let record;
+// Check if there is a value saved in Local Storage
+const recordFromLocalStorage = localStorage.getItem("recordFirstExercice");
+if (recordFromLocalStorage !== null) {
+  // If there is a saved value, assign it to the 'record' variable
+  record = parseInt(recordFromLocalStorage, 10);
+} else {
+  // If there is no saved value, assign 0 to the 'record' variable
+  record = 0;
+  // Save the value 0 in the Local Storage
+  localStorage.setItem("recordFirstExercice", 0);
+}
+const countText = document.getElementById("correctAnswers");
+countText.textContent = count;
+
+const recordText = document.getElementById("record");
+recordText.textContent = record;
 
 async function showCocktailIngredients() {
   try {
@@ -170,6 +188,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         const selectedCocktailId = selectedCocktailDiv.dataset.name;
         let result = selectedCocktailId === cocktailId;
         showResults(result);
+        if (result) {
+          count++;
+          countText.textContent = count;
+          if (count > record) {
+            record = count;
+            recordText.textContent = record;
+            localStorage.setItem("recordFirstExercice", record);
+          }
+        } else {
+          count = 0;
+          countText.textContent = count;
+        }
       }
     }
     function handleNextButtonClick() {
