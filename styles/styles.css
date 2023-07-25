@@ -98,6 +98,10 @@ body {
   padding: 30px;
   margin: 0 40px 40px 40px;
 }
+.text-card-option{
+  padding: 30px;
+  margin: 0 60px 40px 60px;
+}
 /* HOME */
 .container{
   display: flex;
