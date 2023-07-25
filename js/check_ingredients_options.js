@@ -4,6 +4,7 @@ import { showResults } from "./show_results.js";
 
 let cocktailIngredients = [];
 let selectedIngredients = [];
+let cocktailIngredientsList;
 
 let count = 0;
 let record;
@@ -73,7 +74,7 @@ async function showRandomCocktail() {
 
     // Add the ingredients in case the user responds incorrectly
     // Create the list element for the ingredients
-    const cocktailIngredientsList = document.createElement("ul");
+    cocktailIngredientsList = document.createElement("ul");
     cocktailIngredientsList.style.listStyle = "none";
 
     // Add each ingredient as a list item
@@ -204,7 +205,6 @@ function clearHTML() {
   // Remove the random cocktail card
   const cardElement = document.querySelector("#card");
   cardElement.innerHTML = "";
-
   // Remove the list of ingredients
   const ingredientsOptionsDiv = document.querySelector("#ingredients-options");
   ingredientsOptionsDiv.innerHTML = "";
@@ -212,6 +212,11 @@ function clearHTML() {
   // Reset the stored variables
   cocktailIngredients = [];
   selectedIngredients = [];
+}
+
+function clearListIngredients() {
+  // Clear the list of ingredients
+  cocktailIngredientsList.innerHTML = "";
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -254,7 +259,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
     nextButton.addEventListener("click", async () => {
       // Clear the HTML and reset the variables
-      clearHTML();
+      clearListIngredients();
       const correctMessage = document.getElementById(
         "correct-ingredients-options"
       );
