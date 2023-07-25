@@ -1,3 +1,4 @@
+//Function to get a random cocktail
 export default async function getRandomCocktail() {
   try {
     const response = await fetch(

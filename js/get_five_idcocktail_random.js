@@ -1,3 +1,4 @@
+//Function to get 5 random cocktails id
 export default async function getFiveIdRandom() {
   try {
     const idArray = [];

@@ -21,15 +21,20 @@ countText.textContent = count;
 const recordText = document.getElementById("record");
 recordText.textContent = record;
 
+// Function to show cocktail ingredients and image
 async function showCocktailIngredients() {
   try {
+    // Get a random cocktail and extract its ID
     const cocktail = await getRandomCocktail();
     cocktailId = cocktail.idDrink;
+
+    // Show the cocktail image
     const image = document.getElementById("correctAnswer");
     image.classList.add("cocktail-option-image");
     image.src = cocktail.strDrinkThumb;
     image.alt = cocktail.strDrink + " Image";
 
+    // Show the cocktail name in the ingredient container
     const ingredientsContainer = document.getElementById("showIngredients");
     const ingredientName = document.createElement("h3");
     ingredientName.classList.add(
@@ -45,15 +50,25 @@ async function showCocktailIngredients() {
   }
 }
 
+// Function to get a set of cocktail IDs
 async function getCocktailsIds() {
   try {
+    // Get five random cocktail IDs
     const fiveId = await getFiveIdRandom();
+
+    // Show the cocktail ingredients and get the current cocktail ID
     const cocktailId = await showCocktailIngredients();
+
+    // Remove the current cocktail ID from the five random IDs
     const filteredFiveId = fiveId.filter(
       (ingredient) => ingredient !== cocktailId
     );
+
+    // Prepare the final set of cocktail IDs
     const finalCocktailIds = filteredFiveId.slice(-2);
     finalCocktailIds.push(cocktailId);
+
+    // Shuffle the final set of cocktail IDs
     let i = finalCocktailIds.length;
     while (--i > 0) {
       let randIndex = Math.floor(Math.random() * (i + 1));
@@ -62,6 +77,7 @@ async function getCocktailsIds() {
         finalCocktailIds[randIndex],
       ];
     }
+
     return finalCocktailIds;
   } catch (error) {
     throw error;
@@ -70,7 +86,7 @@ async function getCocktailsIds() {
 
 let selectedCocktailDiv = null;
 
-// Función para manejar el clic en un div
+// Function to handle click on a div
 function handleClick(selectedCocktail) {
   const allCocktails = [
     document.getElementById("firstCocktail"),
@@ -78,14 +94,14 @@ function handleClick(selectedCocktail) {
     document.getElementById("thirdCocktail"),
   ];
 
-  // Recorrer todos los divs y quitar el borde negro en los demás
+  // Loop through all the divs and remove the black border from the others
   allCocktails.forEach((cocktail) => {
     if (cocktail === selectedCocktail) {
-      // Si es el div seleccionado, poner el borde negro
+      // If it's the selected div, add a black border
       cocktail.style.borderColor = "black";
-      selectedCocktailDiv = cocktail; // Almacenar el div seleccionado
+      selectedCocktailDiv = cocktail; // Store the selected div
     } else {
-      // Si no es el div seleccionado, quitar el borde
+      // If it's not the selected div, remove the border
       cocktail.style.borderColor = "transparent";
     }
   });
@@ -159,58 +175,77 @@ async function showCocktails() {
 
 const submitButton = document.getElementById("submit-ingredients-options");
 const nextButton = document.getElementById("next-cocktail");
-// Función para mostrar el mensaje y ocultarlo después de un tiempo
+
 function showTemporalMessage() {
   const message = document.getElementById("imageNotSelected");
-  message.classList.remove("hidden"); // Mostrar el mensaje
+  message.classList.remove("hidden");
 
-  // Después de 1 segundo (1000 ms), ocultar el mensaje
+  // After 1 second (1000 ms), hide the message
   setTimeout(function () {
-    message.classList.add("hidden"); // Ocultar el mensaje
+    message.classList.add("hidden");
   }, 1000);
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
+    // Show cocktails and set up event listeners
     showCocktails();
 
+    // Event listener for the "Next" button
     nextButton.addEventListener("click", handleNextButtonClick);
+
+    // Event listener for the "Submit" button
     submitButton.addEventListener("click", handleSubmit);
+
     function handleSubmit() {
       if (!selectedCocktailDiv) {
-        console.log("No hay ningún div seleccionado.");
+        // If no div is selected, log a message and show a temporary message
+        console.log("No div is selected.");
         showTemporalMessage();
       } else {
+        // Reset selected div's border color, clear HTML elements,
+        // and show the "Next" button while hiding the "Submit" button
         selectedCocktailDiv.style.borderColor = "transparent";
         clearHTML();
         submitButton.classList.add("hidden");
         nextButton.classList.remove("hidden");
         const selectedCocktailId = selectedCocktailDiv.dataset.name;
         let result = selectedCocktailId === cocktailId;
+        // Show the result message based on correct or incorrect selection
         showResults(result);
         if (result) {
           count++;
           countText.textContent = count;
           if (count > record) {
+            // Update and store the new record in the Local Storage
             record = count;
             recordText.textContent = record;
             localStorage.setItem("recordFirstExercice", record);
           }
         } else {
+          // Reset the count and update the displayed count
           count = 0;
           countText.textContent = count;
         }
       }
     }
+
     function handleNextButtonClick() {
-      nextButton.classList.add("hidden"); // Oculta el botón "Next"
-      submitButton.classList.remove("hidden"); // Muestra el botón "Submit"
+      // Hide the "Next" button
+      nextButton.classList.add("hidden");
+
+      // Show the "Submit" button
+      submitButton.classList.remove("hidden");
+
+      // Show the container for cocktail options and ingredient list
       const cocktailsDiv = document.querySelector(
         "#container-cocktail-options"
       );
       cocktailsDiv.classList.remove("hidden");
       const ingredientsDiv = document.querySelector("#showIngredients");
       ingredientsDiv.classList.remove("hidden");
+
+      // Clear previous messages and reset selectedCocktailDiv
       const firstDiv = document.querySelector("#firstCocktail");
       const correctMessage = document.getElementById(
         "correct-ingredients-options"
@@ -220,9 +255,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
       correctMessage.classList.add("hidden");
       incorrectMessage.classList.add("hidden");
-      selectedCocktailDiv = null; // Reinicia el div seleccionado
+      selectedCocktailDiv = null;
 
-      showCocktails(); // Muestra nuevos cócteles y sus ingredientes
+      // Show new set of cocktails and their ingredients
+      showCocktails();
     }
   } catch (error) {
     throw error;

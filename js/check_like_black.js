@@ -7,14 +7,14 @@ export function checkLike(cocktail) {
     const isCocktailLiked = favorites.find((fav) => fav.idDrink === cocktailId);
 
     if (isCocktailLiked) {
-      // El cóctel está guardado como favorito
+      // The cocktail is saved as a favorite
       return "../assets/full-like-black.png";
     } else {
-      // El cóctel no está guardado como favorito
+      // The cocktail isn't saved as a favorite
       return "../assets/like-out-black.png";
     }
   } else {
-    // No hay cócteles guardados como favoritos
+    // There aren't cocktails saved as favourites
     return "../assets/like-out-black.png";
   }
 }

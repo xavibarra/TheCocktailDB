@@ -16,24 +16,31 @@ if (recordFromLocalStorage !== null) {
   // Save the value 0 in the Local Storage
   localStorage.setItem("recordSecondExercice", 0);
 }
+// Get the element with ID "correctAnswers" and set its text content to the 'count' variable value
 const countText = document.getElementById("correctAnswers");
 countText.textContent = count;
 
+// Get the element with ID "record" and set its text content to the 'record' variable value
 const recordText = document.getElementById("record");
 recordText.textContent = record;
+
+// Function to show cocktail ingredients on the page
 async function showCocktailIngredients() {
   try {
+    // Get a random cocktail
     const cocktail = await getRandomCocktail();
     cocktailId = cocktail.idDrink;
     const correctCocktail = document.getElementById("correctAnswer");
     correctCocktail.textContent = cocktail.strDrink;
 
+    // Filter out non-empty ingredients and map them to an array
     cocktailIngredients = Object.entries(cocktail)
       .filter(([key, value]) => key.startsWith("strIngredient") && value)
       .map(([key, value]) => value);
 
     const ingredientsContainer = document.getElementById("showIngredients");
 
+    // Iterate through cocktail ingredients and display them as h3 elements
     cocktailIngredients.forEach((ingredient) => {
       const ingredientName = document.createElement("h3");
       ingredientName.classList.add(
@@ -43,6 +50,7 @@ async function showCocktailIngredients() {
       ingredientName.textContent = ingredient;
       ingredientsContainer.appendChild(ingredientName);
     });
+
     console.log("correct answer: " + cocktail.strDrink);
     return cocktailId;
   } catch (error) {
@@ -50,23 +58,32 @@ async function showCocktailIngredients() {
   }
 }
 
+// Function to fetch random cocktail IDs and prepare for display
 async function getCocktailsIds() {
   try {
+    // Get five random cocktail IDs
     const fiveId = await getFiveIdRandom();
     const cocktailId = await showCocktailIngredients();
+
+    // Filter out the current cocktail ID from the five random IDs
     const filteredFiveId = fiveId.filter(
       (ingredient) => ingredient !== cocktailId
     );
+
+    // Select two random IDs from the filtered list and add the current cocktail ID
     const finalCocktailIds = filteredFiveId.slice(-2);
     finalCocktailIds.push(cocktailId);
+
     let i = finalCocktailIds.length;
     while (--i > 0) {
+      // Shuffle the finalCocktailIds array randomly
       let randIndex = Math.floor(Math.random() * (i + 1));
       [finalCocktailIds[randIndex], finalCocktailIds[i]] = [
         finalCocktailIds[i],
         finalCocktailIds[randIndex],
       ];
     }
+
     return finalCocktailIds;
   } catch (error) {
     throw error;
@@ -75,7 +92,7 @@ async function getCocktailsIds() {
 
 let selectedCocktailDiv = null;
 
-// Función para manejar el clic en un div
+// Function to handle click on a div
 function handleClick(selectedCocktail) {
   const allCocktails = [
     document.getElementById("firstCocktail"),
@@ -83,20 +100,20 @@ function handleClick(selectedCocktail) {
     document.getElementById("thirdCocktail"),
   ];
 
-  // Recorrer todos los divs y quitar el borde negro en los demás
+  // Loop through all the divs and remove the black border from the others
   allCocktails.forEach((cocktail) => {
     if (cocktail === selectedCocktail) {
-      // Si es el div seleccionado, poner el borde negro
+      // If it's the selected div, add a black border
       cocktail.style.borderColor = "black";
-      selectedCocktailDiv = cocktail; // Almacenar el div seleccionado
+      selectedCocktailDiv = cocktail; // Store the selected div
     } else {
-      // Si no es el div seleccionado, quitar el borde
+      // If it's not the selected div, remove the border
       cocktail.style.borderColor = "transparent";
     }
   });
 }
 
-// Function to clear the HTML
+// Function to clear the HTML elements
 function clearHTML() {
   const cocktailsDiv = document.querySelector("#container-cocktail-options");
   cocktailsDiv.classList.add("hidden");
@@ -180,11 +197,11 @@ async function showCocktails() {
 }
 function showTemporalMessage() {
   const message = document.getElementById("cocktailNotSelected");
-  message.classList.remove("hidden"); // Mostrar el mensaje
+  message.classList.remove("hidden");
 
-  // Después de 1 segundo (1000 ms), ocultar el mensaje
+  // After 1 second (1000 ms), hide the message
   setTimeout(function () {
-    message.classList.add("hidden"); // Ocultar el mensaje
+    message.classList.add("hidden");
   }, 1000);
 }
 
@@ -195,42 +212,60 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     showCocktails();
 
+    // Event listener for the "Next" button
     nextButton.addEventListener("click", handleNextButtonClick);
+
+    // Event listener for the "Submit" button
     submitButton.addEventListener("click", handleSubmit);
+
     function handleSubmit() {
       if (!selectedCocktailDiv) {
+        // If no cocktail is selected, show a temporary message
         showTemporalMessage();
       } else {
+        // Clear the HTML elements, reset selected div's border color,
+        // and show the "Next" button while hiding the "Submit" button
         clearHTML();
         selectedCocktailDiv.style.borderColor = "transparent";
         submitButton.classList.add("hidden");
         nextButton.classList.remove("hidden");
         const selectedCocktailId = selectedCocktailDiv.dataset.name;
         let result = selectedCocktailId === cocktailId;
+        // Show the result message based on correct or incorrect selection
         showResults(result);
         if (result) {
           count++;
           countText.textContent = count;
           if (count > record) {
+            // Update and store the new record in the Local Storage
             record = count;
             recordText.textContent = record;
             localStorage.setItem("recordSecondExercice", record);
           }
         } else {
+          // Reset the count and update the displayed count
           count = 0;
           countText.textContent = count;
         }
       }
     }
+
     function handleNextButtonClick() {
-      nextButton.classList.add("hidden"); // Oculta el botón "Next"
-      submitButton.classList.remove("hidden"); // Muestra el botón "Submit"
+      // Hide the "Next" button
+      nextButton.classList.add("hidden");
+
+      // Show the "Submit" button
+      submitButton.classList.remove("hidden");
+
+      // Show the container for cocktail options and ingredient list
       const cocktailsDiv = document.querySelector(
         "#container-cocktail-options"
       );
       cocktailsDiv.classList.remove("hidden");
       const ingredientsDiv = document.querySelector("#showIngredients");
       ingredientsDiv.classList.remove("hidden");
+
+      // Clear previous messages and reset selectedCocktailDiv
       const firstDiv = document.querySelector("#firstCocktail");
       const correctMessage = document.getElementById(
         "correct-ingredients-options"
@@ -240,9 +275,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
       correctMessage.classList.add("hidden");
       incorrectMessage.classList.add("hidden");
-      selectedCocktailDiv = null; // Reinicia el div seleccionado
+      selectedCocktailDiv = null;
 
-      showCocktails(); // Muestra nuevos cócteles y sus ingredientes
+      // Show new set of cocktails and their ingredients
+      showCocktails();
     }
   } catch (error) {
     throw error;

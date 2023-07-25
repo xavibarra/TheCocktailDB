@@ -1,7 +1,7 @@
 import getRandomCocktail from "./get_random_cocktail.js";
 import { showResults } from "./show_results.js";
 
-let currentCategory; // Declare a global variable to store the current category
+let currentCategory;
 let categorySelected = [];
 
 let count = 0;
@@ -38,8 +38,6 @@ function toggleCategorySelection(event) {
   categorySelected.push(clickedElement);
   // Set its border color to black
   clickedElement.style.borderColor = "black";
-
-  // Now, you can access the selected category using "currentCategory" or "clickedElement.dataset.name" (data-name attribute)
   currentCategory = clickedElement.dataset.name;
 }
 
@@ -108,14 +106,14 @@ function clearHTML() {
   cardElement.innerHTML = "";
 }
 
-// Función para mostrar el mensaje y ocultarlo después de un tiempo
+// Function to display the message and hide it after a period of time
 function showTemporalMessage() {
   const message = document.getElementById("categoryNotSelected");
-  message.classList.remove("hidden"); // Mostrar el mensaje
+  message.classList.remove("hidden");
 
-  // Después de 1 segundo (1000 ms), ocultar el mensaje
+  // After 1 second (1000 ms), hide the message
   setTimeout(function () {
-    message.classList.add("hidden"); // Ocultar el mensaje
+    message.classList.add("hidden");
   }, 1000);
 }
 
@@ -135,7 +133,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const ingredientOptions = document.getElementById("ingredientOptions");
 
     submitButton.addEventListener("click", () => {
-      // Verificar si alguna categoría ha sido seleccionada
+      // Check if any category has been selected
       if (categorySelected.length > 0) {
         // Clear the HTML after showing the result
         clearHTML();
@@ -143,9 +141,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         submitButton.classList.add("hidden");
         nextButton.classList.remove("hidden");
         ingredientOptions.classList.add("hidden");
-        // Obtener la categoría seleccionada
+        // Get the selected category
         category = categorySelected[0].dataset.name;
-        // Comparar la categoría seleccionada con la categoría actual del cóctel
+        // Compare the selected category with the current cocktail category
         let result = category === currentCategory;
         showResults(result);
         if (result) {
@@ -154,15 +152,15 @@ document.addEventListener("DOMContentLoaded", async () => {
           if (count > record) {
             record = count;
             recordText.textContent = record;
-            localStorage.setItem("recordThirdExercice", record);
+            localStorage.setItem("recordThirdExercise", record);
           }
         } else {
           count = 0;
           countText.textContent = count;
         }
       } else {
-        // Si no se ha seleccionado ninguna categoría, mostrar mensaje de error o realizar alguna otra acción
-        console.log("No se ha seleccionado ninguna categoría.");
+        // If no category has been selected, display an error message or perform some other action
+        console.log("No category has been selected.");
         showTemporalMessage();
       }
     });
@@ -171,7 +169,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const correctCategory = document.getElementById("correctAnswer");
       correctCategory.textContent = "";
 
-      // Limpiar selecciones anteriores y restablecer el borde
+      // Clear previous selections and reset the border
       if (categorySelected.length > 0) {
         const previousSelected = categorySelected.pop();
         previousSelected.style.borderColor = "transparent";

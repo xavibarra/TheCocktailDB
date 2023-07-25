@@ -1,3 +1,4 @@
+//Function to get all ingredients in array
 export default async function getAllIngredients() {
   try {
     const response = await fetch(

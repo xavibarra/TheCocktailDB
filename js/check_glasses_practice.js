@@ -109,14 +109,14 @@ function clearHTML() {
   cardElement.innerHTML = "";
 }
 
-// Función para mostrar el mensaje y ocultarlo después de un tiempo
+// Function to show the message and hide it after a certain time
 function showTemporalMessage() {
   const message = document.getElementById("categoryNotSelected");
-  message.classList.remove("hidden"); // Mostrar el mensaje
+  message.classList.remove("hidden"); // Show the message
 
-  // Después de 3 segundos (1000 ms), ocultar el mensaje
+  // After 1 second (1000 ms), hide the message
   setTimeout(function () {
-    message.classList.add("hidden"); // Ocultar el mensaje
+    message.classList.add("hidden"); // Hide the message
   }, 1000);
 }
 
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const ingredientOptions = document.getElementById("ingredientOptions");
 
     submitButton.addEventListener("click", () => {
-      // Verificar si alguna glass ha sido seleccionada
+      // Check if any glass has been selected
       if (glassSelected.length > 0) {
         // Clear the HTML after showing the result
         clearHTML();
@@ -144,9 +144,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         submitButton.classList.add("hidden");
         nextButton.classList.remove("hidden");
         ingredientOptions.classList.add("hidden");
-        // Obtener la glass seleccionada
+        // Get the selected glass
         glass = glassSelected[0].dataset.name;
-        // Comparar la glass seleccionada con la glass actual del cóctel
+        // Compare the selected glass with the current glass of the cocktail
         let result = glass === currentGlass;
         showResults(result);
         if (result) {
@@ -162,8 +162,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           countText.textContent = count;
         }
       } else {
-        // Si no se ha seleccionado ninguna glass, mostrar mensaje de error o realizar alguna otra acción
-        console.log("No se ha seleccionado ninguna glass.");
+        // If no glass has been selected, show an error message or take other action
+        console.log("No glass has been selected.");
         showTemporalMessage();
       }
     });
@@ -171,8 +171,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     nextButton.addEventListener("click", async () => {
       const correctGlass = document.getElementById("correctAnswer");
       correctGlass.textContent = "";
-
-      // Limpiar selecciones anteriores y restablecer el borde
       if (glassSelected.length > 0) {
         const previousSelected = glassSelected.pop();
         previousSelected.style.borderColor = "transparent";
